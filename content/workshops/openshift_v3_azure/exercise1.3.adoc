@@ -22,7 +22,7 @@ Type in the master public URL provided by your instructor in a browser.
 
 [source,bash]
 ----
-{{< urifqdn_openshift "https://"""""">}}
+{{< urifqdn_openshift "https://""""""">}}
 ----
 
 ====
