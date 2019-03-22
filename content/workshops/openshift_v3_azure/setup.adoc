@@ -46,7 +46,7 @@ Use this command to access the OpenShift CLI interface. Notice you are logging i
 
 [source,bash]
 ----
-{{< urifqdn_openshift "oc login"" "" "" ":8443>}}
+{{< urifqdn_openshift "oc login"" "" "" ">}}
 ----
 
 ----
