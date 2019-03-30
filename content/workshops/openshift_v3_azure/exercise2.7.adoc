@@ -30,7 +30,7 @@ If you have to expose the route use the below commands
 
 [source,bash]
 ----
-oc expose serice bootapp
+oc expose service bootapp
 
 oc get route
 ----
