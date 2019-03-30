@@ -153,6 +153,11 @@ So even after the *application.properties* file is updated in the pod, it is not
 curl -X POST http://bootapp-spring-{{< urifqdn_user "labuser""" >}}.104.209.170.217.nip.io/refresh
 ----
 
+====
+[NOTE]
+In this example, I am using a domain name of *104.209.170.217.nip.io*. Ask the instructor for the domain name suffix for your setup an change it.
+====
+
 Now note that the pod logs show that the application context is refreshed.
 
 2016-11-18 04:25:35.601  INFO 10 --- [io-8080-exec-10] s.c.a.AnnotationConfigApplicationContext : Refreshing
