@@ -1,6 +1,6 @@
 ---
 title: "Setup"
-workshops: ansible_tower_azure
+workshops: azure_infra_ansible
 workshop_weight: 1
 layout: lab
 ---
@@ -8,7 +8,7 @@ layout: lab
 :badges:
 :icons: font
 :iconsdir: http://people.redhat.com/~jduncan/images/icons
-:imagesdir: /workshops/ansible_tower_azure/images
+:imagesdir: /workshops/azure_infra_ansible/images
 :source-highlighter: highlight.js
 :source-language: yaml
 

@@ -1,13 +1,13 @@
 ---
 title: "Exercise 3.0 - Using Ansible to Implement Security"
-workshops: ansible_tower_azure
+workshops: azure_infra_ansible
 workshop_weight: 30
 layout: lab
 ---
 
 :license_url: http://ansible-workshop-bos.redhatgov.io/ansible-license.json
 :icons: font
-:imagesdir: /workshops/ansible_tower_azure/images
+:imagesdir: /workshops/azure_infra_ansible/images
 
 = Exercise 3.0 - Using Ansible to Implement Security
 
@@ -21,7 +21,7 @@ https://galaxy.ansible.com/redhatofficial/rhel7_disa_stig
 
 === Step 1: Download role to Ansible roles directory
 
-In your wetty window (if you closed it, see the link:/workshops/ansible_tower_azure/setup/[SETUP] step, in your workbook), type the following:
+In your wetty window (if you closed it, see the link:/workshops/azure_infra_ansible/setup/[SETUP] step, in your workbook), type the following:
 
 [source,bash]
 ----

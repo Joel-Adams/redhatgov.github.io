@@ -1,12 +1,12 @@
 ---
 title: "Exercise 1.4 - Running the apache-basic-playbook"
-workshops: ansible_tower_azure
+workshops: azure_infra_ansible
 workshop_weight: 14
 layout: lab
 ---
 
 :icons: font
-:imagesdir: /workshops/ansible_tower_azure/images
+:imagesdir: /workshops/azure_infra_ansible/images
 :package_url: http://docs.ansible.com/ansible/package_module.html
 :service_url: http://docs.ansible.com/ansible/service_module.html
 

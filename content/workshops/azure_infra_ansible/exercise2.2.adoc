@@ -1,13 +1,13 @@
 ---
 title: "Exercise 2.2 - Creating and Running a Job Template"
-workshops: ansible_tower_azure
+workshops: azure_infra_ansible
 workshop_weight: 22
 layout: lab
 ---
 
 :license_url: http://ansible-workshop-bos.redhatgov.io/wslic.txt
 :icons: font
-:imagesdir: /workshops/ansible_tower_azure/images
+:imagesdir: /workshops/azure_infra_ansible/images
 
 = Exercise 2.2 - Creating and Running a Job Template
 

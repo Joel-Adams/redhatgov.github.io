@@ -1,12 +1,12 @@
 ---
 title: "Exercise 1.5 - Roles: Making your playbooks reusable"
-workshops: ansible_tower_azure
+workshops: azure_infra_ansible
 workshop_weight: 15
 layout: lab
 ---
 
 :icons: font
-:imagesdir: /workshops/ansible_tower_azure/images
+:imagesdir: /workshops/azure_infra_ansible/images
 :package_url: http://docs.ansible.com/ansible/package_module.html
 :service_url: http://docs.ansible.com/ansible/service_module.html
 :dir_url: http://docs.ansible.com/ansible/playbooks_best_practices.html
