@@ -33,7 +33,7 @@ Learn to build Red Hat Ansible Tower playbooks to build in security, empower jun
 - How to run ad hoc commands
 
 - How to write a playbook
-- How to install and configure Red Hat Ansible Tower on Azure
+- How to install and configure Red Hat Enterprise Linux on Azure using Ansible
 - How to use templates to save time
 - How to enhance security, using Ansible Tower
 
