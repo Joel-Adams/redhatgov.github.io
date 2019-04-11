@@ -1,0 +1,55 @@
+---
+title: Managing Azure using Ansible
+menu:
+  main:
+    parent: workshops
+    pre: fa fa-magic
+---
+
+:domain_name: cloudapp.azure.com
+:workshop_prefix: workshop
+:ssh_url: https://{{ workshop_prefix }}-student0.{{ region }}.cloudapp.azure.com/wetty/ssh/azure-user
+
+:icons: font
+:iconsdir: http://people.redhat.com/~jduncan/images/icons
+:imagesdir: /workshops/ansible_tower_azu/images
+
+= Managing Azure using Red Hat Ansible
+
+== Workshop Description
+
+Learn to build Red Hat Ansible Tower playbooks to build in security, empower junior staff and offload senior staff, by automating your most tedious tasks!
+
+## Who should attend
+
+-   Architects
+-   Developers
+-   Technical Leads
+-   Operations Engineers
+
+
+== What you will learn
+
+- How to run ad hoc commands
+
+- How to write a playbook
+- How to install and configure Red Hat Ansible Tower on Azure
+- How to use templates to save time
+- How to enhance security, using Ansible Tower
+
+== Overview
+
+The Ansible Workshop is meant for anyone who has any exposure to Ansible, whether you have used it or not. We are going to start with a short overview and then we’ll get into the lab as soon as possible. That is where we will spend most of our time.
+
+== Your Responsibilities
+Have a Discussion. This will be boring if it’s just us, up here talking for over 4 hours.
+
+Participate. We are going to cut you loose with Ansible, in just a little while. Have questions. Have opinions.
+
+Hopefully you have your laptop with you. If not, please find a shoulder-surfing buddy. See? Not only can we dig into Ansible but you can make a new friend!
+
+== Exercises
+
+{{< labs azure_infra_ansible >}}
+
+{{< importPartial "footer/footer_azure.html" >}}
