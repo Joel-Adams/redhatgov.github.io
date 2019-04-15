@@ -197,7 +197,7 @@ image::lab9-green_screen.png['green_screen', width=1024]
 
 *Part III*
 
-You can route traffic to both services. This is also known as "cannary in a colemine".
+You can route traffic to both services. This is also known as "canary in a coalmine".
 
 Log into the web console if you are not already then select the Blue Green Project.
 
