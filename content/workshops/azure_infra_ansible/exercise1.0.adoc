@@ -43,7 +43,7 @@ To Sign in please use the below credentials
 
 [source,bash]
 ----
-Email: {{< urifqdn_azure_login "Student" "snxcsp.onmicrosoft.com" >}}
+Email: {{< urifqdn_azure_login "Student" "@snxcsp.onmicrosoft.com" >}}
 ----
 
 
