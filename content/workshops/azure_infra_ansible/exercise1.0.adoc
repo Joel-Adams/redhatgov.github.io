@@ -79,6 +79,6 @@ Use `vi` or `vim` to open a file called `hosts`
 localhost
 ----
 
-Save the file by pressing *Esc* then typing :wq and pressing enter. 
+Save the file by pressing *Esc* then typing *:wq* and pressing *Enter*. 
 
 {{< importPartial "footer/footer_azure.html" >}}

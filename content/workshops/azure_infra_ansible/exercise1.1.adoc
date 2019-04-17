@@ -10,7 +10,7 @@ layout: lab
 :figure-caption!:
 :become_url: http://docs.ansible.com/ansible/become.html
 :dir_url: http://docs.ansible.com/ansible/playbooks_best_practices.html
-:package_url: http://docs.ansible.com/ansible/package_module.html
+:azure_rm_virtualnetwork_url: https://docs.ansible.com/ansible/latest/modules/azure_rm_virtualnetwork_module.html#azure-rm-virtualnetwork-module
 :service_url: http://docs.ansible.com/ansible/service_module.html
 :yaml_url: http://docs.ansible.com/ansible/YAMLSyntax.html
 
@@ -83,9 +83,9 @@ If you want to see the entire playbook for reference, skip to the bottom of this
 [source,bash]
 ----
 tasks:
- - name: Create Azure VPC
+ - name: Create Azure Network
    azure_rm_virtualnetwork:
-     name: {{< urifqdn_azure_login "Student" "-vpc" >}}
+     name: {{< urifqdn_azure_login "Student" "-Network" >}}
      address_prefixes_cidr: 172.16.0.0/16
      resource_group: {{< urifqdn_azure_login "Student" >}}
 ----
@@ -101,29 +101,16 @@ Therefore, give your tasks a name that is short, sweet, and to the point
 
 [source,text]
 ----
-package:
-  name: httpd
-  state: present
+azure_rm_virtualnetwork:
+  name: {{< urifqdn_azure_login "Student" "-Network" >}}
+  address_prefixes_cidr: 172.16.0.0/16
+  resource_group: {{< urifqdn_azure_login "Student" >}}
 ----
 
 
-- These three lines are calling the Ansible module *package* to install httpd.
-link:{package_url}[Click here] to see all options for the package module.
-
-
-
-[source,text]
-----
-service:
-  name: httpd
-  state: started
-----
-
-
-
-- The next few lines are using the ansible module *service* to start the httpd service.  The service module
-is the preferred way of controlling services on remote hosts.  link:{service_url}[Click here] to learn more
-about the *service* module.
+- These four lines are calling the Ansible module *azure_rm_virtualnetwork* to install a Virtual Network in Azure.
+The *name*, *address_prefixes_cidr*, and *resource_group* are all required variables for the module.
+link:{azure_rm_virtualnetwork_url}[Click here] to see all options for the Virtual Network module.
 
 
 
@@ -134,7 +121,7 @@ Now that you've completed writing your playbook, it would be a shame not to keep
 Use the `write/quit` method in `vi` or `vim` to save your playbook, i.e. `Esc :wq!`
 
 
-And that should do it.  You should now have a fully written playbook called `install_apache.yml`.
+And that should do it.  You should now have a fully written playbook called `create_azure_infra.yml`.
 You are ready to automate!
 
 [NOTE]
