@@ -6,6 +6,7 @@ layout: lab
 ---
 
 :dir_url: https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest
+:azure_portal_url: portal.azure.com
 :domain_name: redhatgov.io
 :icons: font
 :imagesdir: /workshops/azure_infra_ansible/images
@@ -44,13 +45,18 @@ To Sign in please use the below credentials
 [source,bash]
 ----
 Email: {{< urifqdn_azure_login "Student" "@snxcsp.onmicrosoft.com" >}}
+Password: RedHatSNX123!
 ----
 
 
-=== Step 2: Run a Linux command
+=== Step 2: Log into the Azure Portal
 
-Now let's see how we can run a Linux command and format the output, using the `command` module.
+Now let's see what resources we have available currently in our Azure Portal.
 
+To log into the Azure Portal please click link:{azure_portal_url}[here].
+
+[NOTE]
+If you are not automatically logged into the Azure portal, please use the Email address and Password above to log in. 
 
 [source,bash]
 ----
