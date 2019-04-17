@@ -1,5 +1,5 @@
 ---
-title: "Exercise 1.0 - Running Ad-hoc commands"
+title: "Exercise 1.0 - Azure CLI"
 workshops: azure_infra_ansible
 workshop_weight: 10
 layout: lab
@@ -22,29 +22,18 @@ For our first exercise, we are going to log into Azure CLI. This is the way we w
 
 Azure CLI has already been installed for you. For more information on how it is installed please see link:{dir_url}[Install the Azure CLI].
 
-====
-[NOTE]
-The *workshopname*, in the example below, will be provided to you by your instructor.  The *#* should be replaced by your student number.
+=== Step 1: Log into Azure CLI
 
-For example, a recent workshop's first student used:
-*{{< urifqdn_azure "" "tower" "" >}}*
-====
-
-.hosts (example)
-[source,bash]
-----
-[web]
-{{< urifqdn_azure "" "node" "" >}}
-----
-
-=== Step 1: Test webhost response
-
-Let's start with something basic - pinging a host.  The `ping` module tests the responsiveness of our web host.
+Let's start with something basic - logging into the Azure CLI
 
 [source,bash]
 ----
-ansible web -m ping
+az login
 ----
+
+Once that command is run, it will return a URL and and authorization code. Please bring up a second browser tab and enter that URL and Authorization code.
+
+image::az_login.PNG[caption="Figure 1: ", title="az login stdout",328]
 
 === Step 2: Run a Linux command
 
