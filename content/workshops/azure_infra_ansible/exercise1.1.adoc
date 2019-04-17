@@ -18,9 +18,8 @@ layout: lab
 = Exercise 1.1 - Writing Your First Playbook
 
 
-Now that you've gotten a sense of how ansible works, we are going to write our first
-ansible *playbook*.  The playbook is where you can take some of those ad-hoc commands you just ran
-and put them into a repeatable set of *plays* and *tasks*.
+Now that you've gotten a sense of how Azure connections work, we are going to write our first
+ansible *playbook* to architect Azure infrastructure.
 
 A playbook can have multiple plays and a play
 can have one or multiple tasks.  The goal of a *play* is to map a group of hosts.  The goal of a *task* is to implement modules against those hosts.
@@ -41,36 +40,38 @@ Instead, we are going to create a very simple directory structure for our playbo
 
 [source,bash]
 ----
-mkdir ~/apache_basic
-cd ~/apache_basic
+mkdir ~/azure_infra
+cd ~/azure_infra
 ----
 
-=== Step 2: Use `vi` or `vim` to open a file called `install_apache.yml`
+=== Step 2: Use `vi` or `vim` to open a file called `create_azure_infra.yml`
 
 
 
 
 == Section 2: Defining Your Play
 
-Now that you are editing `install_apache.yml`, let's begin by defining the play and then understanding what each line accomplishes
+Now that you are editing `create_azure_infra.yml`, let's begin by defining the play and then understanding what each line accomplishes
 
 
 
 [source,bash]
 ----
 ---
-- hosts: web
-  name: Install the apache web service
-  become: yes
+- hosts: localhost
+  connection: local
+  name: Create Instances in Azure
+  become: no
+  gather_facts: no
 ----
 
 
 
 - `---` Defines the beginning of YAML
-- `hosts: web` Defines the host group in your inventory on which this play will run against
-- `name: Install the apache web service` This describes our play
-- `become: yes` Enables user privilege escalation.  The default is *sudo*, however *su*, *pbrun*, and link:{become_url}[several others] methods are also supported.
-
+- `hosts: localhost` Defines the host will be local. Since Ansible builds Azure commands locally then sends them across as API calls.
+- `name: Create Instances in Azure` This describes our play
+- `become: no` Enables user privilege escalation.  For this playbook we will not need user escalation. The default is *sudo*, however *su*, *pbrun*, and link:{become_url}[several others] methods are also supported.
+- `gather_facts: no` We don't need to gather any facts about the end environment.
 
 == Section 3: Adding Tasks to Your Play
 
@@ -82,15 +83,11 @@ If you want to see the entire playbook for reference, skip to the bottom of this
 [source,bash]
 ----
 tasks:
- - name: install apache
-   package:
-     name: httpd
-     state: present
-
- - name: start httpd
-   service:
-     name: httpd
-     state: started
+ - name: Create Azure VPC
+   azure_rm_virtualnetwork:
+     name: {{< urifqdn_azure_login "Student" "-vpc" >}}
+     address_prefixes_cidr: 172.16.0.0/16
+     resource_group: {{< urifqdn_azure_login "Student" >}}
 ----
 
 

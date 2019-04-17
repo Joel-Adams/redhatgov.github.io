@@ -51,7 +51,7 @@ Password: RedHatSNX123!
 
 [NOTE]
 There are multiple ways to authenticate Ansible with Azure. For reference documentation on different connection styles including the use of service principals please see link:{ansible_azure_url}[Azure Authentication Guide].
-We will be using Azure CLI for this workshop due to its ease of use. 
+We will be using Azure CLI for this workshop due to its ease of use.
 
 
 === Step 2: Log into the Azure Portal
@@ -68,7 +68,7 @@ Once logged in select Resources to review your current Resources inside Azure.
 image::azure_resources.png[catpion="Figure 3: ", title="Azure Resources",328]
 
 [NOTE]
-As you can tell there are currently no resources inside your Resource Group.
+As you can tell, there are currently no resources inside your Resource Group.
 
 
 {{< importPartial "footer/footer_azure.html" >}}
