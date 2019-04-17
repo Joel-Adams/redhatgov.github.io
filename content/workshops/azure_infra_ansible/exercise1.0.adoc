@@ -70,5 +70,15 @@ image::azure_resources.png[catpion="Figure 3: ", title="Azure Resources",328]
 [NOTE]
 As you can tell, there are currently no resources inside your Resource Group.
 
+=== Step 3: Create a hosts file for your Ansible inventory
+
+Use `vi` or `vim` to open a file called `hosts`
+
+[source,bash]
+----
+localhost
+----
+
+Save the file by pressing *Esc* then typing :wq and pressing enter. 
 
 {{< importPartial "footer/footer_azure.html" >}}

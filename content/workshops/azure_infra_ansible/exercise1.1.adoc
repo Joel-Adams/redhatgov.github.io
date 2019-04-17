@@ -36,7 +36,7 @@ our playbook today is very basic and creating a complex structure will just conf
 Instead, we are going to create a very simple directory structure for our playbook, and add just a couple of files to it.
 
 
-=== Step 1: Create a directory called `apache_basic` in your home directory and change directories into it
+=== Step 1: Create a directory called `azure_infra` in your home directory and change directories into it
 
 [source,bash]
 ----
