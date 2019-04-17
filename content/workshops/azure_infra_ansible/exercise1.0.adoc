@@ -7,6 +7,7 @@ layout: lab
 
 :dir_url: https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest
 :azure_portal_url: https://portal.azure.com
+:ansible_azure_url: https://docs.ansible.com/ansible/latest/scenario_guides/guide_azure.html
 :domain_name: redhatgov.io
 :icons: font
 :imagesdir: /workshops/azure_infra_ansible/images
@@ -47,6 +48,10 @@ To Sign in please use the below credentials
 Email: {{< urifqdn_azure_login "Student" "@snxcsp.onmicrosoft.com" >}}
 Password: RedHatSNX123!
 ----
+
+[NOTE]
+There are multiple ways to authenticate Ansible with Azure. For reference documentation on different connection styles including the use of service principals please see link:{ansible_azure_url}[Azure Authentication Guide].
+We will be using Azure CLI for this workshop due to its ease of use. 
 
 
 === Step 2: Log into the Azure Portal
