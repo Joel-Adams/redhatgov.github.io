@@ -33,7 +33,19 @@ az login
 
 Once that command is run, it will return a URL and and authorization code. Please bring up a second browser tab and enter that URL and Authorization code.
 
-image::az_login.PNG[caption="Figure 1: ", title="az login stdout",328]
+image::az_login.PNG[caption="Figure 1: ", title="az login stdout"]
+
+Once everything is entered please press continue. It will then bring you to the login page.
+
+image::azure_sign_in.PNG[catpion="Figure 2: ", title="Azure Sign in"]
+
+To Sign in please use the below credentials
+
+[source,bash]
+----
+Email: {{< urifqdn_azure_login "Student" "snxcsp.onmicrosoft.com" >}}
+----
+
 
 === Step 2: Run a Linux command
 
