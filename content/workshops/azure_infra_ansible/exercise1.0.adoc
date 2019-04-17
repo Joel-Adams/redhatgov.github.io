@@ -60,7 +60,7 @@ If you are not automatically logged into the Azure portal, please use the Email 
 
 Once logged in select Resources to review your current Resources inside Azure.
 
-image::azure_resources.png[catpion="Figure 3: ", title="Azure Resources"]
+image::azure_resources.png[catpion="Figure 3: ", title="Azure Resources",328]
 
 [NOTE]
 As you can tell there are currently no resources inside your Resource Group.
