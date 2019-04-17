@@ -15,7 +15,7 @@ layout: lab
 
 = Workshop Lab Setup
 
-image::ansible_logo.png['Ansible']
+image::Ansible_and_Azure.png['Ansible']
 
 == Wetty (Browser-based SSH)
 

@@ -13,7 +13,7 @@ menu:
 
 :icons: font
 :iconsdir: http://people.redhat.com/~jduncan/images/icons
-:imagesdir: /workshops/ansible_tower_azu/images
+:imagesdir: /workshops/ansible_tower_azure/images
 
 = Red Hat Ansible Tower Workshop on Azure
 
