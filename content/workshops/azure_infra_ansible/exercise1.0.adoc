@@ -5,21 +5,22 @@ workshop_weight: 10
 layout: lab
 ---
 
+:dir_url: https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest
 :domain_name: redhatgov.io
 :icons: font
 :imagesdir: /workshops/azure_infra_ansible/images
 
 
-= Exercise 1.0 - Running Ad Hoc Commands
+= Exercise 1.0 - Logging into Azure CLI
 
 
-== Section 1: Ad hoc commands
+== Section 1: Azure CLI
 
-For our first exercise, we are going to run some ad hoc commands to help you get a feel for how Red Hat Ansible Tower works.  Ansible ad hoc commands enable you to perform repeatable tasks on remote nodes, without having to write a playbook.  They are very useful when you simply need to do one or two tasks quickly and often, to many remote nodes.
+For our first exercise, we are going to log into Azure CLI. This is the way we will be connecting to the Azure infrastructure to run our Ansible Automation.
 
 === Set Up Dependencies:
 
-Define your inventory.  Inventories are crucial to Ansible, as they define remote machines on which you will run commands or your playbook(s).  Use `vi` or `vim` to create a file called `hosts`.  Then, add the appropriate definitions for the node that will function as a web node.
+Azure CLI has already been installed for you. For more information on how it is installed please see link:{dir_url}[Install the Azure CLI].
 
 ====
 [NOTE]
