@@ -80,7 +80,7 @@ tasks:
  - name: Create a public ip address
    azure_rm_publicipaddress:
      resource_group: {{< urifqdn_azure_login "Student" >}}
-     name: {{< urifqdn_azure_login "Student" "-RHELVM" >}}
+     name: {{< urifqdn_azure_login "Student" "-PubIP" >}}
      allocation_method: Dynamic
      domain_name: {{< urifqdn_azure_login "Student" "-VM1" >}}
 ----
