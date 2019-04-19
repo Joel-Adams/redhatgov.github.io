@@ -328,77 +328,77 @@ You are ready to automate!
   gather_facts: no
 
   tasks:
- - name: Create Azure Network
-   azure_rm_virtualnetwork:
-     name: {{< urifqdn_azure_login "Student" "-Network" >}}
-     address_prefixes_cidr: 172.16.0.0/16
-     resource_group: {{< urifqdn_azure_login "Student" >}}
+  - name: Create Azure Network
+    azure_rm_virtualnetwork:
+      name: {{< urifqdn_azure_login "Student" "-Network" >}}
+      address_prefixes_cidr: 172.16.0.0/16
+      resource_group: {{< urifqdn_azure_login "Student" >}}
 
- - name: Create subnet for {{< urifqdn_azure_login "Student" "-Network" >}}
-   azure_rm_subnet:
-     resource_group: {{< urifqdn_azure_login "Student" >}}
-     name: {{< urifqdn_azure_login "Student" "-Subnet" >}}
-     virtual_network_name: {{< urifqdn_azure_login "Student" "-Network" >}}
-     address_prefix_cidr: 172.16.16.0/20
+  - name: Create subnet for {{< urifqdn_azure_login "Student" "-Network" >}}
+    azure_rm_subnet:
+      resource_group: {{< urifqdn_azure_login "Student" >}}
+      name: {{< urifqdn_azure_login "Student" "-Subnet" >}}
+      virtual_network_name: {{< urifqdn_azure_login "Student" "-Network" >}}
+      address_prefix_cidr: 172.16.16.0/20
 
- - name: Create a public ip address
-   azure_rm_publicipaddress:
-     resource_group: {{< urifqdn_azure_login "Student" >}}
-     name: {{< urifqdn_azure_login "Student" "-PubIP" >}}
-     allocation_method: Dynamic
-     domain_name: {{< urifqdn_azure_login "student" "vm1" >}}
+  - name: Create a public ip address
+    azure_rm_publicipaddress:
+      resource_group: {{< urifqdn_azure_login "Student" >}}
+      name: {{< urifqdn_azure_login "Student" "-PubIP" >}}
+      allocation_method: Dynamic
+      domain_name: {{< urifqdn_azure_login "student" "vm1" >}}
 
- - name: Create Azure security group for the virtual network named {{< urifqdn_azure_login "Student" "-Network" >}}
-   azure_rm_securitygroup:
-     name: {{< urifqdn_azure_login "Student" "-SG" >}}
-     resource_group: {{< urifqdn_azure_login "Student" >}}
-     rules:
-       - name: 'AllowMultiplePorts'
-         protocol: Tcp
-         destination_port_range:
-           - 443
-           - 80
-           - 22
-           - 3389
-           - 8888
-           - 8080
-           - 8443
-         access: Allow
-         priority: 100
-         direction: Inbound
-       - name: 'AllowAllOutbound'
-         priority: 201
-         direction: Outbound
+  - name: Create Azure security group for the virtual network named {{< urifqdn_azure_login "Student" "-Network" >}}
+    azure_rm_securitygroup:
+      name: {{< urifqdn_azure_login "Student" "-SG" >}}
+      resource_group: {{< urifqdn_azure_login "Student" >}}
+      rules:
+        - name: 'AllowMultiplePorts'
+          protocol: Tcp
+          destination_port_range:
+            - 443
+            - 80
+            - 22
+            - 3389
+            - 8888
+            - 8080
+            - 8443
+          access: Allow
+          priority: 100
+          direction: Inbound
+        - name: 'AllowAllOutbound'
+          priority: 201
+          direction: Outbound
 
- - name: Create a network interface using existing security group and public IP
-   azure_rm_networkinterface:
-     name: {{< urifqdn_azure_login "Student" "-NI" >}}
-     resource_group: {{< urifqdn_azure_login "Student" >}}
-     virtual_network: {{< urifqdn_azure_login "Student" "-Network" >}}
-     subnet_name: {{< urifqdn_azure_login "Student" "-Subnet" >}}
-     security_group: {{< urifqdn_azure_login "Student" "-SG" >}}
-     cert_validation_mode: ignore
-     ip_configurations:
-       - name: {{< urifqdn_azure_login "student" ".ipconfig1" >}}
-         private_ip_allocation_method: Dynamic
-         public_ip_address_name: {{< urifqdn_azure_login "Student" "-PubIP" >}}
+  - name: Create a network interface using existing security group and public IP
+    azure_rm_networkinterface:
+      name: {{< urifqdn_azure_login "Student" "-NI" >}}
+      resource_group: {{< urifqdn_azure_login "Student" >}}
+      virtual_network: {{< urifqdn_azure_login "Student" "-Network" >}}
+      subnet_name: {{< urifqdn_azure_login "Student" "-Subnet" >}}
+      security_group: {{< urifqdn_azure_login "Student" "-SG" >}}
+      cert_validation_mode: ignore
+      ip_configurations:
+        - name: {{< urifqdn_azure_login "student" ".ipconfig1" >}}
+          private_ip_allocation_method: Dynamic
+          public_ip_address_name: {{< urifqdn_azure_login "Student" "-PubIP" >}}
 
- - name: Create Azure instances for ansible node (control node)
-   azure_rm_virtualmachine:
-     resource_group: {{< urifqdn_azure_login "Student" >}}
-     name: {{< urifqdn_azure_login "Student" "vm1">}}
-     vm_size: Standard_B2s
-     admin_username: "student{{ item }}"
-     admin_password: "{{ admin_password }}"
-     network_interface_names: "{{azure_name_prefix}}.student{{ item }}"
-     image:
-       offer: RHEL
-       publisher: RedHat
-       sku: '7-RAW'
-       version: latest
-     ssh_public_keys:
-       - path: /home/azure-user/.ssh/
-         key_data: {{ lookup('file', 'id_rsa') }}
+  - name: Create Azure instances for ansible node (control node)
+    azure_rm_virtualmachine:
+      resource_group: {{< urifqdn_azure_login "Student" >}}
+      name: {{< urifqdn_azure_login "Student" "vm1">}}
+      vm_size: Standard_B2s
+      admin_username: "student{{ item }}"
+      admin_password: "{{ admin_password }}"
+      network_interface_names: "{{azure_name_prefix}}.student{{ item }}"
+      image:
+        offer: RHEL
+        publisher: RedHat
+        sku: '7-RAW'
+        version: latest
+      ssh_public_keys:
+        - path: /home/azure-user/.ssh/
+          key_data: {{ lookup('file', 'id_rsa') }}
 ----
 
 
