@@ -304,7 +304,7 @@ tasks:
        version: latest
      ssh_public_keys:
        - path: /home/azure-user/.ssh/
-         key_data: lookup('file', 'id_rsa')
+         key_data: "{{lookup('file', '/home/azure-user/.ssh/id_rsa.pub')}}"
 ----
 
 
@@ -398,8 +398,7 @@ You are ready to automate!
         version: latest
       ssh_public_keys:
         - path: /home/{{< urifqdn_azure_login "Student" >}}/.ssh/authorized_keys
-          key_data: lookup('file', 'id_rsa')
+          key_data: "{{lookup('file', '/home/azure-user/.ssh/id_rsa.pub')}}"
 ----
-
 
 {{< importPartial "footer/footer_azure.html" >}}
