@@ -388,9 +388,9 @@ You are ready to automate!
       resource_group: {{< urifqdn_azure_login "Student" >}}
       name: {{< urifqdn_azure_login "Student" "vm1">}}
       vm_size: Standard_B2s
-      admin_username: "student{{ item }}"
-      admin_password: "{{ admin_password }}"
-      network_interface_names: "{{azure_name_prefix}}.student{{ item }}"
+      admin_username: {{< urifqdn_azure_login "Student" >}}
+      admin_password: RedHatSNX123!
+      network_interface_names: {{< urifqdn_azure_login "Student" "-NI" >}}
       image:
         offer: RHEL
         publisher: RedHat
@@ -398,7 +398,7 @@ You are ready to automate!
         version: latest
       ssh_public_keys:
         - path: /home/azure-user/.ssh/
-          key_data: {{ lookup('file', 'id_rsa') }}
+          key_data: lookup('file', 'id_rsa')
 ----
 
 
