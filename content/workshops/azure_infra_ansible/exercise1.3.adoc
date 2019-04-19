@@ -46,6 +46,8 @@ From your playbook directory ( `~/azure_infra` ), run your playbook.
 ansible-playbook -i ../hosts create_azure_infra.yml
 ----
 
+image::azure_play.png[caption="Figure 2: ", title="Playbook Run"]
+
 === Step 3: Add a task
 
 Add a new task called *install httpd packages*.
