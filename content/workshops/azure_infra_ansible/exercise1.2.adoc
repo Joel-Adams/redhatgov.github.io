@@ -51,7 +51,7 @@ Now, run your playbook as specified in *Step 1*
 
 In standard output, you should see something that looks very similar to the following:
 
-image::stdout_1.png[caption="Figure 1: ", title="azure_infra playbook stdout",328]
+image::stdout_1.png[caption="Figure 1: ", title="azure_infra playbook stdout",228]
 
 Notice that the play and each task is named, so that you can understand the action being performed and the node it is being performed upon.
 You also may notice a task in there that you didn't write;  <cough> `setup` <cough>.  This is because the `setup` module
