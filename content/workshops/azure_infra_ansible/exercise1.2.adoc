@@ -82,7 +82,7 @@ tasks:
      resource_group: {{< urifqdn_azure_login "Student" >}}
      name: {{< urifqdn_azure_login "Student" "-PubIP" >}}
      allocation_method: Dynamic
-     domain_name: {{< urifqdn_azure_login "Student" "VM1" >}}
+     domain_name: {{< urifqdn_azure_login "student" "vm1" >}}
 ----
 
 {{< importPartial "footer/footer_azure.html" >}}
