@@ -72,13 +72,13 @@ As you can tell, there are currently no resources inside your Resource Group.
 
 === Step 3: Create a hosts file for your Ansible inventory
 
-Use `vi` or `vim` to open a file called `hosts`
+Back in your Wetty browser use `vi` or `vim` to open a file called `hosts` on your Red Hat Enterprise Server. 
 
 [source,bash]
 ----
 localhost
 ----
 
-Save the file by pressing *Esc* then typing *:wq* and pressing *Enter*. 
+Save the file by pressing *Esc* then typing *:wq* and pressing *Enter*.
 
 {{< importPartial "footer/footer_azure.html" >}}
