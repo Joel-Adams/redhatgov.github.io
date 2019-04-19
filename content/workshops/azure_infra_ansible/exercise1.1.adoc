@@ -132,20 +132,19 @@ like this.  Take note of the spacing and alignment.
 [source,bash]
 ----
 ---
-- hosts: web
-  name: Install the apache web service
-  become: yes
+---
+- hosts: localhost
+  connection: local
+  name: Create Instances in Azure
+  become: no
+  gather_facts: no
 
   tasks:
-    - name: install apache
-      package:
-        name: httpd
-        state: present
-
-    - name: start httpd
-      service:
-        name: httpd
-        state: started
+   - name: Create Azure VPC
+     azure_rm_virtualnetwork:
+       name: Student3-vpc
+       address_prefixes_cidr: 172.16.0.0/16
+       resource_group: Student3
 ----
 
 {{< importPartial "footer/footer_azure.html" >}}
