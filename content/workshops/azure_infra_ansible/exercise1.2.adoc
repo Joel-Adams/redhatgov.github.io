@@ -61,4 +61,28 @@ image::azure_network.png[caption="Figure 2: ", title="Azure Resources"]
 
 == Section 2: Building out your Infrastructure
 
+Now that we have a Virtaul Network,  lets build out the reset of our infrastructure so support a virtual machine. To do this we are going to be adding
+tasks to our original playbook.
+
+=== Step 1: Create a public IP address
+
+The first thing we will be doing is adding a Public IP address to the machine so we can connect to it once it is up and running.
+
+[source,bash]
+----
+tasks:
+ - name: Create Azure Network
+   azure_rm_virtualnetwork:
+     name: {{< urifqdn_azure_login "Student" "-Network" >}}
+     address_prefixes_cidr: 172.16.0.0/16
+     resource_group: {{< urifqdn_azure_login "Student" >}}
+     
+ - name: Create a public ip address
+   azure_rm_publicipaddress:
+     resource_group: {{< urifqdn_azure_login "Student" >}}
+     name: {{< urifqdn_azure_login "Student" "-RHELVM" >}}
+     allocation_method: Dynamic
+     domain_name: {{< urifqdn_azure_login "Student" "-VM1" >}}
+
+
 {{< importPartial "footer/footer_azure.html" >}}
