@@ -48,6 +48,14 @@ ansible-playbook -i ../hosts create_azure_infra.yml
 
 image::azure_play.png[caption="Figure 2: ", title="Playbook Run"]
 
+[NOTE]
+As you will notice the Task *Create Azure Network* responds with ok. This is due to the fact it was already previously created.
+Ansible noted that the virtual network was already in place and there was nothing more to do.
+
+Now if you log back into your Azure Portal and refresh all of the resources you will see everything that we just created using Ansible!
+
+image::azure_deployed_resources.png[caption="Figure 3: ", title="Azure Resources"]
+
 === Step 3: Add a task
 
 Add a new task called *install httpd packages*.
