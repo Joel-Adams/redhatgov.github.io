@@ -54,41 +54,9 @@ In standard output, you should see something that looks very similar to the foll
 image::stdout_1.png[caption="Figure 1: ", title="azure_infra playbook stdout",228]
 
 Notice that the play and each task is named, so that you can understand the action being performed and the node it is being performed upon.
-You also may notice a task in there that you didn't write;  <cough> `setup` <cough>.  This is because the `setup` module
-runs by default.  To turn if off, you can specify link:{gather_facts_url}[gather_facts: false] in your play definition like this:
 
+Once the play completes. Log into your Azure portal and click *All resources* to view the Virtaul Network that you just created.
 
-[source,bash]
-----
----
-- hosts: web
-  name: Install the apache web service
-  become: yes
-  gather_facts: false
-----
-
-
-
-=== Step 2: Remove Apache
-
-Now, let's experiment a little.
-We would like you to reverse what you've done (i.e. stop and uninstall apache on your web nodes).
-So, edit your playbook and then when you're finished, rerun it - as described in *Step 1*.
-For this exercise we aren't going to show you line by line, but we will give you a few hints.
-
-[NOTE]
-
-- If your first task in the playbook was to install httpd and the second task was to start the service, which order do you think
-those tasks should be in now?
-- If `started` makes sure a service is started, then what option ensures it is stopped?
-- If `present` makes sure a package is installed, then what option ensures it is removed?  Er... starts with an *ab*, ends with a *sent*
-
-
-
-
-Feel free to browse the help pages to see a list of all options.
-
-- link:{package_url}[Ansible package module]
-- link:{service_url}[Ansible service module]
+== Section 2: Building out your Infrastructure
 
 {{< importPartial "footer/footer_azure.html" >}}
