@@ -61,8 +61,8 @@ Now that you are editing `create_azure_infra.yml`, let's begin by defining the p
 - hosts: localhost
   connection: local
   name: Create Instances in Azure
-  become: no
   gather_facts: no
+  become: no
 ----
 
 
