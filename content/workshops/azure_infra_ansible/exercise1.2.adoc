@@ -64,9 +64,9 @@ image::azure_network.png[caption="Figure 2: ", title="Azure Resources"]
 Now that we have a Virtaul Network,  lets build out the reset of our infrastructure so support a virtual machine. To do this we are going to be adding
 tasks to our original playbook.
 
-=== Step 1: Create a public IP address
+=== Step 1: Create a subnet for the Virtual Network.
 
-The first thing we will be doing is adding a Public IP address to the machine so we can connect to it once it is up and running.
+Now that we have a virtual network in place we will need to create a subnet that our systems will use to communicate.
 
 [source,bash]
 ----
@@ -77,6 +77,33 @@ tasks:
      address_prefixes_cidr: 172.16.0.0/16
      resource_group: {{< urifqdn_azure_login "Student" >}}
 
+ - name: Create subnet for {{< urifqdn_azure_login "Student" "-Network" >}}
+   azure_rm_subnet:
+     resource_group: {{< urifqdn_azure_login "Student" >}}
+     name: {{< urifqdn_azure_login "Student" "-Subnet" >}}
+     virtual_network_name: {{< urifqdn_azure_login "Student" "-Network" >}}
+     address_prefix_cidr: 172.16.16.0/20
+----
+
+=== Step 2: Create a public IP address
+
+The first thing we will be doing is adding a Public IP address to the machine so we can connect to it once it is up and running.
+
+[source,bash]
+----
+ - name: Create Azure Network
+   azure_rm_virtualnetwork:
+     name: {{< urifqdn_azure_login "Student" "-Network" >}}
+     address_prefixes_cidr: 172.16.0.0/16
+     resource_group: {{< urifqdn_azure_login "Student" >}}
+
+ - name: Create subnet for {{< urifqdn_azure_login "Student" "-Network" >}}
+   azure_rm_subnet:
+     resource_group: {{< urifqdn_azure_login "Student" >}}
+     name: {{< urifqdn_azure_login "Student" "-Subnet" >}}
+     virtual_network_name: {{< urifqdn_azure_login "Student" "-Network" >}}
+     address_prefix_cidr: 172.16.16.0/20
+
  - name: Create a public ip address
    azure_rm_publicipaddress:
      resource_group: {{< urifqdn_azure_login "Student" >}}
@@ -84,5 +111,10 @@ tasks:
      allocation_method: Dynamic
      domain_name: {{< urifqdn_azure_login "student" "vm1" >}}
 ----
+
+=== Step 3: Create a Security Group
+
+Next we will need to create a security group. This will allow us to mangage the traffic allowed in and out of our systems.
+
 
 {{< importPartial "footer/footer_azure.html" >}}
