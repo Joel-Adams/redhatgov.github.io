@@ -132,7 +132,6 @@ like this.  Take note of the spacing and alignment.
 [source,bash]
 ----
 ---
----
 - hosts: localhost
   connection: local
   name: Create Instances in Azure
