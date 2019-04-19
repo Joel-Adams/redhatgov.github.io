@@ -105,6 +105,7 @@ azure_rm_virtualnetwork:
   name: {{< urifqdn_azure_login "Student" "-Network" >}}
   address_prefixes_cidr: 172.16.0.0/16
   resource_group: {{< urifqdn_azure_login "Student" >}}
+  state: present
 ----
 
 
@@ -141,9 +142,10 @@ like this.  Take note of the spacing and alignment.
   tasks:
    - name: Create Azure VPC
      azure_rm_virtualnetwork:
-       name: Student3-vpc
+       name: {{< urifqdn_azure_login "Student" "-Network" >}}
        address_prefixes_cidr: 172.16.0.0/16
-       resource_group: Student3
+       resource_group: {{< urifqdn_azure_login "Student" >}}
+       state: present
 ----
 
 {{< importPartial "footer/footer_azure.html" >}}
