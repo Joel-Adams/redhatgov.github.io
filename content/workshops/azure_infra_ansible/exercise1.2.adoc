@@ -88,10 +88,11 @@ tasks:
 === Step 2: Create a public IP address
 
 The next thing we will be doing is adding a Public IP address to the resource group.
-We will later attach this IP to the Red Hat Enterprise Linux server that we create. 
+We will later attach this IP to the Red Hat Enterprise Linux server that we create via a network interface.
 
 [source,bash]
 ----
+tasks:
  - name: Create Azure Network
    azure_rm_virtualnetwork:
      name: {{< urifqdn_azure_login "Student" "-Network" >}}
@@ -116,6 +117,289 @@ We will later attach this IP to the Red Hat Enterprise Linux server that we crea
 === Step 3: Create a Security Group
 
 Next we will need to create a security group. This will allow us to mangage the traffic allowed in and out of our systems.
+
+[source,bash]
+----
+tasks:
+ - name: Create Azure Network
+   azure_rm_virtualnetwork:
+     name: {{< urifqdn_azure_login "Student" "-Network" >}}
+     address_prefixes_cidr: 172.16.0.0/16
+     resource_group: {{< urifqdn_azure_login "Student" >}}
+
+ - name: Create subnet for {{< urifqdn_azure_login "Student" "-Network" >}}
+   azure_rm_subnet:
+     resource_group: {{< urifqdn_azure_login "Student" >}}
+     name: {{< urifqdn_azure_login "Student" "-Subnet" >}}
+     virtual_network_name: {{< urifqdn_azure_login "Student" "-Network" >}}
+     address_prefix_cidr: 172.16.16.0/20
+
+ - name: Create a public ip address
+   azure_rm_publicipaddress:
+     resource_group: {{< urifqdn_azure_login "Student" >}}
+     name: {{< urifqdn_azure_login "Student" "-PubIP" >}}
+     allocation_method: Dynamic
+     domain_name: {{< urifqdn_azure_login "student" "vm1" >}}
+
+ - name: Create Azure security group for the virtual network named {{< urifqdn_azure_login "Student" "-Network" >}}
+   azure_rm_securitygroup:
+     name: {{< urifqdn_azure_login "Student" "-SG" >}}
+     resource_group: {{< urifqdn_azure_login "Student" >}}
+     rules:
+       - name: 'AllowMultiplePorts'
+         protocol: Tcp
+         destination_port_range:
+           - 443
+           - 80
+           - 22
+           - 3389
+           - 8888
+           - 8080
+           - 8443
+         access: Allow
+         priority: 100
+         direction: Inbound
+       - name: 'AllowAllOutbound'
+         priority: 201
+         direction: Outbound
+----
+
+=== Step 4: Create a Network Interface using the existing security group and public IP
+
+Now that we have the *Security Group* and *Public IP Adress* added to our tasks, we will use those to create a *Network Interface*
+
+[source,bash]
+----
+tasks:
+ - name: Create Azure Network
+   azure_rm_virtualnetwork:
+     name: {{< urifqdn_azure_login "Student" "-Network" >}}
+     address_prefixes_cidr: 172.16.0.0/16
+     resource_group: {{< urifqdn_azure_login "Student" >}}
+
+ - name: Create subnet for {{< urifqdn_azure_login "Student" "-Network" >}}
+   azure_rm_subnet:
+     resource_group: {{< urifqdn_azure_login "Student" >}}
+     name: {{< urifqdn_azure_login "Student" "-Subnet" >}}
+     virtual_network_name: {{< urifqdn_azure_login "Student" "-Network" >}}
+     address_prefix_cidr: 172.16.16.0/20
+
+ - name: Create a public ip address
+   azure_rm_publicipaddress:
+     resource_group: {{< urifqdn_azure_login "Student" >}}
+     name: {{< urifqdn_azure_login "Student" "-PubIP" >}}
+     allocation_method: Dynamic
+     domain_name: {{< urifqdn_azure_login "student" "vm1" >}}
+
+ - name: Create Azure security group for the virtual network named {{< urifqdn_azure_login "Student" "-Network" >}}
+   azure_rm_securitygroup:
+     name: {{< urifqdn_azure_login "Student" "-SG" >}}
+     resource_group: {{< urifqdn_azure_login "Student" >}}
+     rules:
+       - name: 'AllowMultiplePorts'
+         protocol: Tcp
+         destination_port_range:
+           - 443
+           - 80
+           - 22
+           - 3389
+           - 8888
+           - 8080
+           - 8443
+         access: Allow
+         priority: 100
+         direction: Inbound
+       - name: 'AllowAllOutbound'
+         priority: 201
+         direction: Outbound
+
+ - name: Create a network interface using existing security group and public IP
+   azure_rm_networkinterface:
+     name: {{< urifqdn_azure_login "Student" "-NI" >}}
+     resource_group: {{< urifqdn_azure_login "Student" >}}
+     virtual_network: {{< urifqdn_azure_login "Student" "-Network" >}}
+     subnet_name: {{< urifqdn_azure_login "Student" "-Subnet" >}}
+     security_group: {{< urifqdn_azure_login "Student" "-SG" >}}
+     cert_validation_mode: ignore
+     ip_configurations:
+       - name: {{< urifqdn_azure_login "student" ".ipconfig1" >}}
+         private_ip_allocation_method: Dynamic
+         public_ip_address_name: {{< urifqdn_azure_login "Student" "-PubIP" >}}
+----
+
+=== Step 5: Create Red Hat Enterprise Linux (RHEL) Virtual Machine
+
+Finally we will add a task to create a virtual machine using all of the resources we previously created.
+
+[source,bash]
+----
+tasks:
+ - name: Create Azure Network
+   azure_rm_virtualnetwork:
+     name: {{< urifqdn_azure_login "Student" "-Network" >}}
+     address_prefixes_cidr: 172.16.0.0/16
+     resource_group: {{< urifqdn_azure_login "Student" >}}
+
+ - name: Create subnet for {{< urifqdn_azure_login "Student" "-Network" >}}
+   azure_rm_subnet:
+     resource_group: {{< urifqdn_azure_login "Student" >}}
+     name: {{< urifqdn_azure_login "Student" "-Subnet" >}}
+     virtual_network_name: {{< urifqdn_azure_login "Student" "-Network" >}}
+     address_prefix_cidr: 172.16.16.0/20
+
+ - name: Create a public ip address
+   azure_rm_publicipaddress:
+     resource_group: {{< urifqdn_azure_login "Student" >}}
+     name: {{< urifqdn_azure_login "Student" "-PubIP" >}}
+     allocation_method: Dynamic
+     domain_name: {{< urifqdn_azure_login "student" "vm1" >}}
+
+ - name: Create Azure security group for the virtual network named {{< urifqdn_azure_login "Student" "-Network" >}}
+   azure_rm_securitygroup:
+     name: {{< urifqdn_azure_login "Student" "-SG" >}}
+     resource_group: {{< urifqdn_azure_login "Student" >}}
+     rules:
+       - name: 'AllowMultiplePorts'
+         protocol: Tcp
+         destination_port_range:
+           - 443
+           - 80
+           - 22
+           - 3389
+           - 8888
+           - 8080
+           - 8443
+         access: Allow
+         priority: 100
+         direction: Inbound
+       - name: 'AllowAllOutbound'
+         priority: 201
+         direction: Outbound
+
+ - name: Create a network interface using existing security group and public IP
+   azure_rm_networkinterface:
+     name: {{< urifqdn_azure_login "Student" "-NI" >}}
+     resource_group: {{< urifqdn_azure_login "Student" >}}
+     virtual_network: {{< urifqdn_azure_login "Student" "-Network" >}}
+     subnet_name: {{< urifqdn_azure_login "Student" "-Subnet" >}}
+     security_group: {{< urifqdn_azure_login "Student" "-SG" >}}
+     cert_validation_mode: ignore
+     ip_configurations:
+       - name: {{< urifqdn_azure_login "student" ".ipconfig1" >}}
+         private_ip_allocation_method: Dynamic
+         public_ip_address_name: {{< urifqdn_azure_login "Student" "-PubIP" >}}
+
+ - name: Create Azure instances for ansible node (control node)
+   azure_rm_virtualmachine:
+     resource_group: {{< urifqdn_azure_login "Student" >}}
+     name: {{< urifqdn_azure_login "Student" "vm1">}}
+     vm_size: Standard_B2s
+     admin_username: "student{{ item }}"
+     admin_password: "{{ admin_password }}"
+     network_interface_names: "{{azure_name_prefix}}.student{{ item }}"
+     image:
+       offer: RHEL
+       publisher: RedHat
+       sku: '7-RAW'
+       version: latest
+     ssh_public_keys:
+       - path: /home/azure-user/.ssh/
+         key_data: {{ lookup('file', 'id_rsa') }}
+----
+
+
+=== Step 6: Saving your Playbook
+
+Now that you've completed writing your playbook, it would be a shame not to keep it.
+
+Use the `write/quit` method in `vi` or `vim` to save your playbook, i.e. `Esc :wq!`
+
+
+And that should do it.  You should now have a fully written playbook called `create_azure_infra.yml`.
+You are ready to automate!
+
+[source,bash]
+----
+---
+- hosts: localhost
+  connection: local
+  name: Create Instances in Azure
+  become: no
+  gather_facts: no
+
+  tasks:
+ - name: Create Azure Network
+   azure_rm_virtualnetwork:
+     name: {{< urifqdn_azure_login "Student" "-Network" >}}
+     address_prefixes_cidr: 172.16.0.0/16
+     resource_group: {{< urifqdn_azure_login "Student" >}}
+
+ - name: Create subnet for {{< urifqdn_azure_login "Student" "-Network" >}}
+   azure_rm_subnet:
+     resource_group: {{< urifqdn_azure_login "Student" >}}
+     name: {{< urifqdn_azure_login "Student" "-Subnet" >}}
+     virtual_network_name: {{< urifqdn_azure_login "Student" "-Network" >}}
+     address_prefix_cidr: 172.16.16.0/20
+
+ - name: Create a public ip address
+   azure_rm_publicipaddress:
+     resource_group: {{< urifqdn_azure_login "Student" >}}
+     name: {{< urifqdn_azure_login "Student" "-PubIP" >}}
+     allocation_method: Dynamic
+     domain_name: {{< urifqdn_azure_login "student" "vm1" >}}
+
+ - name: Create Azure security group for the virtual network named {{< urifqdn_azure_login "Student" "-Network" >}}
+   azure_rm_securitygroup:
+     name: {{< urifqdn_azure_login "Student" "-SG" >}}
+     resource_group: {{< urifqdn_azure_login "Student" >}}
+     rules:
+       - name: 'AllowMultiplePorts'
+         protocol: Tcp
+         destination_port_range:
+           - 443
+           - 80
+           - 22
+           - 3389
+           - 8888
+           - 8080
+           - 8443
+         access: Allow
+         priority: 100
+         direction: Inbound
+       - name: 'AllowAllOutbound'
+         priority: 201
+         direction: Outbound
+
+ - name: Create a network interface using existing security group and public IP
+   azure_rm_networkinterface:
+     name: {{< urifqdn_azure_login "Student" "-NI" >}}
+     resource_group: {{< urifqdn_azure_login "Student" >}}
+     virtual_network: {{< urifqdn_azure_login "Student" "-Network" >}}
+     subnet_name: {{< urifqdn_azure_login "Student" "-Subnet" >}}
+     security_group: {{< urifqdn_azure_login "Student" "-SG" >}}
+     cert_validation_mode: ignore
+     ip_configurations:
+       - name: {{< urifqdn_azure_login "student" ".ipconfig1" >}}
+         private_ip_allocation_method: Dynamic
+         public_ip_address_name: {{< urifqdn_azure_login "Student" "-PubIP" >}}
+
+ - name: Create Azure instances for ansible node (control node)
+   azure_rm_virtualmachine:
+     resource_group: {{< urifqdn_azure_login "Student" >}}
+     name: {{< urifqdn_azure_login "Student" "vm1">}}
+     vm_size: Standard_B2s
+     admin_username: "student{{ item }}"
+     admin_password: "{{ admin_password }}"
+     network_interface_names: "{{azure_name_prefix}}.student{{ item }}"
+     image:
+       offer: RHEL
+       publisher: RedHat
+       sku: '7-RAW'
+       version: latest
+     ssh_public_keys:
+       - path: /home/azure-user/.ssh/
+         key_data: {{ lookup('file', 'id_rsa') }}
+----
 
 
 {{< importPartial "footer/footer_azure.html" >}}
