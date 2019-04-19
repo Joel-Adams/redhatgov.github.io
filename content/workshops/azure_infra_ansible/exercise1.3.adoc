@@ -59,187 +59,109 @@ image::azure_deployed_resources.png[caption="Figure 3: ", title="Azure Resources
 
 But wait.... where did that storage account come from? When you create the virtual machine using a Market Place image from Azure
 it automatically creates a Storage account for the Operating System if one is not defined. We could have also created a Storage account
-and created multiple disk for the virtual machine. To see all of the options when creating a virtual machine see link:{ansible_module}[here].
+and created multiple disk for the virtual machine. To see all of the options when creating a virtual machine see the parameters section link:{ansible_module}[here].
 
-=== Step 3: Add a task
+== Section 2: Bad Playbook
 
-Add a new task called *install httpd packages*.
+As you can see the playbook works as directed and creates multiple resources inside Azure. There is only one problem. The playbook that we created uses
+defined static variables throughout. This is not repeatable nor easy to update. In later exercises you will learn more about using Variables and Roles
+inside your playbook to achive a resuible structure.
 
-[source,bash]
-----
-  tasks:
-    - name: install httpd packages
-      package:
-        name: "{{ item }}"
-        state: present
-      with_items: "{{ httpd_packages }}"
-      notify: restart apache service
-----
-
-[NOTE]
-====
-Explanation of the *install httpd packages* task actions. +
-
-- `vars:` You've told Ansible the next thing it sees will be a variable name +
-- `httpd_packages` You are defining a list-type variable called httpd_packages.  What follows
-is a list of those packages +
-- `{{ item }}` You are telling Ansible that this will expand into a list item like `httpd` and `mod_wsgi`. +
-- `with_items: "{{ httpd_packages }}` This is your loop which is instructing Ansible to perform this task on
-every `item` in `httpd_packages`
-- `notify: restart apache service` This statement is a `handler`, so we'll come back to it in Section 3.
-====
-
-
-== Section 2: Deploying files and starting a service
-
-When you need to do pretty much anything with files and directories, use one of the link:{file_url}[Ansible Files] modules.  In this case, we'll leverage the `file` and `template` modules.
-
-After that, you will define a task to start the start the apache service.
-
-
-=== Step 1: Create a template directory
-Create a `templates` directory in your project directory and download two files.
-
-[source,bash]
-----
-mkdir templates
-cd templates
-curl -O http://ansible-workshop.redhatgov.io/workshop-files/httpd.conf.j2
-curl -O http://ansible-workshop.redhatgov.io/workshop-files/index.html.j2
-----
-
-=== Step 2: Add file and service tasks
-Add some file tasks and a service task to your playbook.
-
-[source,bash]
-----
-    - name: create site-enabled directory
-      file:
-        name: /etc/httpd/conf/sites-enabled
-        state: directory
-
-    - name: copy httpd.conf
-      template:
-        src: templates/httpd.conf.j2
-        dest: /etc/httpd/conf/httpd.conf
-      notify: restart apache service
-
-    - name: copy index.html
-      template:
-        src: templates/index.html.j2
-        dest: /var/www/html/index.html
-
-    - name: start httpd
-      service:
-        name: httpd
-        state: started
-        enabled: yes
-----
-
-[NOTE]
-====
-What actions are performed by the playbook we just wrote?
-
-- `file:` This module is used to create, modify, delete files, directories, and symlinks.
-- `template:` This module specifies that a jinja2 template is being used and deployed. `template` is part of the `Files`
-  module family and we encourage you to check out all of the other link:{file_url}[file-management modules here].
-- *jinja-who?* - Not to be confused with 2013's blockbuster "Ninja II - Shadow of a Tear", link:{jinja2_url}[jinja2] is
-used in Ansible to transform data inside a template expression, i.e. filters.
-- *service* - The Service module starts/stops/restarts services.
-====
-
-
-== Section 3: Defining and Using Handlers
-
-Often, we may find ourselves needing to restart a service or process. Reasons may include the deployment of a configuration file, installation of a new package, etc. Here,  we are going to learn about using handlers in this situation.
-
-There are really two parts to this Section; adding a handler to the playbook and calling the handler after the a task.  We will start with the former.
-
-=== Step 1: Define a handler
-
-[source,bash]
-----
-  handlers:
-    - name: restart apache service
-      service:
-        name: httpd
-        state: restarted
-        enabled: yes
-----
-
-[NOTE]
-====
-
-- `handler:` This is telling the *play* that the `tasks:` are over, and now we are defining `handlers:`.
-  Everything below that looks the same as any other task, i.e. you give it a name, a module, and the options for that
-  module.  This is the definition of a handler.
-
-====
-=== Step 2: Calling the handlers
-[NOTE]
-
-You can't have a former if you don't mention the latter
-
-- `notify: restart apache service` ...and here is your latter. Finally!  The `notify` statement is the invocation of a handler by
-name.  Quite the reveal, we know.   You already noticed that you've added a `notify` statement to the `copy httpd.conf`
-task, now you know why.
-===
-
-== Section 4: Review
-
-Your new, improved playbook is done! But don't run it just yet, we'll do that in our next exercise.  For now, let's take a second look to make sure everything
-looks the way you intended.  If not, now is the time to fix it up. The figure below shows line counts and spacing.
-
+For example, this is what the playbook would look like if we had defined variables inside the playbook.
 
 [source,bash]
 ----
 ---
-- hosts: web
-  name: This is a play within a playbook
-  become: yes
+- hosts: localhost
+  connection: local
+  name: Create Instances in Azure
+  become: no
+  gather_facts: no
   vars:
-    httpd_packages:
-      - httpd
-      - mod_wsgi
-    apache_test_message: This is a test message
-    apache_max_keep_alive_requests: 115
+    resource_group_name: {{< urifqdn_azure_login "Student" >}}
+    virtual_netowrk_name: {{< urifqdn_azure_login "Student" "-Network" >}}
+    public_ip_name: {{< urifqdn_azure_login "Student" "-PubIP" >}}
+    security_group_name: {{< urifqdn_azure_login "Student" "-SG" >}}
+    domain_name: {{< urifqdn_azure_login "student" "vm1" >}}
+    network_infrace_name: {{< urifqdn_azure_login "Student" "-NI" >}}
+    virtual_machine_name: {{< urifqdn_azure_login "Student" "vm1">}}
+    vn_address_prefixes_cidr: 172.16.0.0/16
+    subnet_cidr: 172.16.16.0/20
 
   tasks:
-    - name: httpd packages are present
-      package:
-        name: "{{ item }}"
-        state: present
-      with_items: "{{ httpd_packages }}"
-      notify: restart apache service
+  - name: Create Azure Network
+    azure_rm_virtualnetwork:
+      name: "{{ virtual_network_name }}"
+      address_prefixes_cidr: "{{ vn_address_prefixes_cidr }}"
+      resource_group: "{{ resource_group_name }}"
 
-    - name: site-enabled directory is present
-      file:
-        name: /etc/httpd/conf/sites-enabled
-        state: directory
+  - name: Create subnet for "{{ virtual_network_name }}"
+    azure_rm_subnet:
+      resource_group: "{{ resource_group_name }}"
+      name: {{< urifqdn_azure_login "Student" "-Subnet" >}}
+      virtual_network_name: "{{ virtual_network_name }}"
+      address_prefix_cidr: "{{ subnet_cidr }}"
 
-    - name: latest httpd.conf is present
-      template:
-        src: templates/httpd.conf.j2
-        dest: /etc/httpd/conf/httpd.conf
-      notify: restart apache service
+  - name: Create a public ip address
+    azure_rm_publicipaddress:
+      resource_group: "{{ resource_group_name }}"
+      name: "{{ public_ip_name }}"
+      allocation_method: Dynamic
+      domain_name: "{{ domain_name }}"
 
-    - name: latest index.html is present
-      template:
-        src: templates/index.html.j2
-        dest: /var/www/html/index.html
+  - name: Create Azure security group for the virtual network named "{{ virtual_network_name }}"
+    azure_rm_securitygroup:
+      name: "{{ security_group_name }}"
+      resource_group: "{{ resource_group_name }}"
+      rules:
+        - name: 'AllowMultiplePorts'
+          protocol: Tcp
+          destination_port_range:
+            - 443
+            - 80
+            - 22
+            - 3389
+            - 8888
+            - 8080
+            - 8443
+          access: Allow
+          priority: 100
+          direction: Inbound
+        - name: 'AllowAllOutbound'
+          priority: 201
+          direction: Outbound
 
-    - name: httpd is started and enabled
-      service:
-        name: httpd
-        state: started
-        enabled: yes
+  - name: Create a network interface using existing security group and public IP
+    azure_rm_networkinterface:
+      name: "{{ network_interface_name }}"
+      resource_group: "{{ resource_group_name }}"
+      virtual_network: "{{ virtual_network_name }}"
+      subnet_name: {{< urifqdn_azure_login "Student" "-Subnet" >}}
+      security_group: "{{ security_group_name }}"
+      cert_validation_mode: ignore
+      ip_configurations:
+        - name: {{< urifqdn_azure_login "student" ".ipconfig1" >}}
+          private_ip_allocation_method: Dynamic
+          public_ip_address_name: {{< urifqdn_azure_login "Student" "-PubIP" >}}
 
-  handlers:
-    - name: restart apache service
-      service:
-        name: httpd
-        state: restarted
-        enabled: yes
+  - name: Create Azure RHEL Virtual Machine
+    azure_rm_virtualmachine:
+      resource_group: "{{ resource_group_name }}"
+      name: "{{ virtual_machine_name }}"
+      vm_size: Standard_B2s
+      admin_username: {{< urifqdn_azure_login "Student" >}}
+      admin_password: RedHatSNX123!
+      network_interface_names: "{{ network_interface_name }}"
+      image:
+        offer: RHEL
+        publisher: RedHat
+        sku: '7-RAW'
+        version: latest
+      ssh_public_keys:
+        - path: /home/{{< urifqdn_azure_login "Student" >}}/.ssh/authorized_keys
+          key_data: "{{lookup('file', '/home/azure-user/.ssh/id_rsa.pub')}}"
 ----
+
+By just updating the variables we would now be able to run this playbook again and create an entirely new Azure Infrastructure. 
 
 {{< importPartial "footer/footer_azure.html" >}}
