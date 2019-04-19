@@ -87,7 +87,8 @@ tasks:
 
 === Step 2: Create a public IP address
 
-The first thing we will be doing is adding a Public IP address to the machine so we can connect to it once it is up and running.
+The next thing we will be doing is adding a Public IP address to the resource group.
+We will later attach this IP to the Red Hat Enterprise Linux server that we create. 
 
 [source,bash]
 ----
