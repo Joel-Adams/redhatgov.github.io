@@ -7,10 +7,6 @@ layout: lab
 
 :icons: font
 :imagesdir: /workshops/azure_infra_ansible/images
-:package_url: http://docs.ansible.com/ansible/package_module.html
-:service_url: http://docs.ansible.com/ansible/service_module.html
-:gather_facts_url: http://docs.ansible.com/ansible/latest/playbooks_variables.html#turning-off-facts
-
 
 = Exercise 1.2 - Running Your Playbook
 
@@ -383,7 +379,7 @@ You are ready to automate!
           private_ip_allocation_method: Dynamic
           public_ip_address_name: {{< urifqdn_azure_login "Student" "-PubIP" >}}
 
-  - name: Create Azure instances for ansible node (control node)
+  - name: Create Azure RHEL Virtual Machine
     azure_rm_virtualmachine:
       resource_group: {{< urifqdn_azure_login "Student" >}}
       name: {{< urifqdn_azure_login "Student" "vm1">}}
