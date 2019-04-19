@@ -7,7 +7,7 @@ layout: lab
 
 :icons: font
 :imagesdir: /workshops/azure_infra_ansible/images
-
+:ansible_module: https://docs.ansible.com/ansible/latest/modules/azure_rm_virtualmachine_module.html#azure-rm-virtualmachine-module
 
 = Exercise 1.3 - Running Your Completed Playbook
 
@@ -55,6 +55,11 @@ Ansible noted that the virtual network was already in place and there was nothin
 Now if you log back into your Azure Portal and refresh all of the resources you will see everything that we just created using Ansible!
 
 image::azure_deployed_resources.png[caption="Figure 3: ", title="Azure Resources"]
+
+
+But wait.... where did that storage account come from? When you create the virtual machine using a Market Place image from Azure
+it automatically creates a Storage account for the Operating System if one is not defined. We could have also created a Storage account
+and created multiple disk for the virtual machine. To see all of the options when creating a virtual machine see link:{ansible_module}[here].
 
 === Step 3: Add a task
 
