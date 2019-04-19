@@ -76,13 +76,13 @@ tasks:
      name: {{< urifqdn_azure_login "Student" "-Network" >}}
      address_prefixes_cidr: 172.16.0.0/16
      resource_group: {{< urifqdn_azure_login "Student" >}}
-     
+
  - name: Create a public ip address
    azure_rm_publicipaddress:
      resource_group: {{< urifqdn_azure_login "Student" >}}
      name: {{< urifqdn_azure_login "Student" "-RHELVM" >}}
      allocation_method: Dynamic
      domain_name: {{< urifqdn_azure_login "Student" "-VM1" >}}
-
+----
 
 {{< importPartial "footer/footer_azure.html" >}}
