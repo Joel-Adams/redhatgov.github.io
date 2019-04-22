@@ -165,7 +165,7 @@ Add some file tasks and a service task to your playbook.
         permanent: yes
         state: enabled
       with_items: "{{ firewall_ports }}"
-      notify: restart firewall
+      notify: restart firewalld
 ----
 
 [NOTE]
@@ -281,7 +281,7 @@ looks the way you intended.  If not, now is the time to fix it up. The figure be
         permanent: yes
         state: enabled
       with_items: "{{ firewall_ports }}"
-      notify: restart firewall
+      notify: restart firewalld
 
   handlers:
     - name: restart apache service
