@@ -40,7 +40,7 @@ ansible_user={{< urifqdn_azure_login "Student" >}}
 
 [web]
 {{< urifqdn_azure_login "Student" >}}vm1.eastus.cloudapp.azure.com
-{{< urifqdn_azure "Student" "vm1">}}
+{{< urifqdn_azure_vm "Student" "vm1" >}}
 ----
 
 === Step 2: Run your playbook
