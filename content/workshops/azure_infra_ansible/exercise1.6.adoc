@@ -1,6 +1,6 @@
 ---
 title: "Exercise 1.6 - Running Your Playbook"
-workshops: ansible_tower_azure
+workshops: azure_infra_ansible
 workshop_weight: 16
 layout: lab
 ---
