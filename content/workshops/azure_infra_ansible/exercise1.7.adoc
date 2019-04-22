@@ -81,7 +81,7 @@ Add a play definition and some variables to your playbook.  These include additi
     apache_max_keep_alive_requests: 115
     firewall_ports:
       - https
-      - httpd
+      - http
 ----
 
 
@@ -243,7 +243,7 @@ looks the way you intended.  If not, now is the time to fix it up. The figure be
     apache_max_keep_alive_requests: 115
     firewall_ports:
       - https
-      - httpd
+      - http
 
   tasks:
     - name: httpd packages are present
