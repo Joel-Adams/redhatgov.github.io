@@ -1,7 +1,7 @@
 ---
-title: "Exercise 1.5 - Writing Your First playbook"
+title: "Exercise 1.5 - Writing Your Second playbook"
 workshops: azure_infra_ansible
-workshop_weight: 11
+workshop_weight: 15
 layout: lab
 ---
 
@@ -15,7 +15,7 @@ layout: lab
 :yaml_url: http://docs.ansible.com/ansible/YAMLSyntax.html
 
 
-= Exercise 1.5 - Writing Your First Playbook
+= Exercise 1.5 - Writing Your Second Playbook
 
 
 Now that you've gotten a sense of how ansible works, we are going to write our first
