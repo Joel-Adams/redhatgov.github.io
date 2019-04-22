@@ -27,8 +27,11 @@ From your playbook directory ( `~/apache_basic` ), run your playbook.
 
 [source,bash]
 ----
-ansible-playbook -i ../hosts install_apache.yml
+ansible-playbook -i ../hosts install_apache.yml --ask-become
 ----
+
+[NOTE]
+The password is *RedHatSNX123!*. The --ask-become is requesting that you enter the sudo password before the playbook is run.
 
 
 However, before you run that command, lets take a few moments to understand the options.
