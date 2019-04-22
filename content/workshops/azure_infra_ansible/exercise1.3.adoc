@@ -56,7 +56,7 @@ Now if you log back into your Azure Portal and refresh all of the resources you 
 
 image::azure_deployed_resources.png[caption="Figure 3: ", title="Azure Resources"]
 
-
+[NOTE]
 But wait.... where did that storage account come from? When you create the virtual machine using a Market Place image from Azure
 it automatically creates a Storage account for the Operating System if one is not defined. We could have also created a Storage account
 and created multiple disk for the virtual machine. To see all of the options when creating a virtual machine see the parameters section link:{ansible_module}[here].
@@ -162,6 +162,6 @@ For example, this is what the playbook would look like if we had defined variabl
           key_data: "{{lookup('file', '/home/azure-user/.ssh/id_rsa.pub')}}"
 ----
 
-By just updating the variables we would now be able to run this playbook again and create an entirely new Azure Infrastructure. 
+By just updating the variables we would now be able to run this playbook again and create an entirely new Azure Infrastructure.
 
 {{< importPartial "footer/footer_azure.html" >}}

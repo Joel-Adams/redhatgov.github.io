@@ -1,5 +1,5 @@
 ---
-title: "Exercise 1.4 - Running the apache-basic-playbook"
+title: "Exercise 1.4 - Managing Your New Resources"
 workshops: azure_infra_ansible
 workshop_weight: 14
 layout: lab
@@ -11,23 +11,37 @@ layout: lab
 :service_url: http://docs.ansible.com/ansible/service_module.html
 
 
-= Exercise 1.4 - Running the Apache-Basic Playbook
+= Exercise 1.4 - Managing Your New Resources
 
-Congratulations!  You just wrote a playbook that incorporates some key Ansible concepts that you use in
-most, if not all, of your future playbooks.  Before you get too excited though, we should probably make sure it actually runs. So, let's do that now.
+Congratulations!  You just wrote a playbook that allows you to create and manage Azure Infrastructure.
+But what happens once that infrastructure is up? How do we manage and maintain it?
 
-== Section 1 - Running your new apache playbook
+== Section 1 - Updating your host file
 
-=== Step 1: Create a host file
-Make sure you are in the right directory and create a host file.
+=== Step 1: Updating your host file
+The first thing we are going to do is make some changes to the host file.
 
 [source,bash]
 ----
-cd ~/apache-basic-playbook
+cd ..
+vi hosts
 ----
 
-[NOTE]
-Since you already did the work of creating a host file in Lession 1.0, feel free to re-use it.
+Inside of the host file we are going to be adding a new group and some variables to connect to your remote machine.
+
+[source,bash]
+----
+localhost
+
+[all:vars]
+ansible_ssh_private_key_file=/home/azure-user/.ssh/id_rsa
+ansible_port=22
+ansible_user={{< urifqdn_azure_login "Student" >}}
+
+[web]
+{{< urifqdn_azure_login "Student" >}}vm1.eastus.cloudapp.azure.com
+{{< urifqdn_azure "Student" "" >}}
+----
 
 === Step 2: Run your playbook
 Run your playbook, using the following command.
