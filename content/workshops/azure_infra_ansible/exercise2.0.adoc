@@ -30,7 +30,15 @@ However, we are only going to focus on a few of the key concepts required for th
 
 == Section 1: Logging into Ansible Tower and installing the license key
 
-To log in, use the username `admin` and the password `ansibleWS`.
+
+Tower URL:
+
+[source,bash]
+----
+{{< urifqdn_azure "https://" "student" >}}
+----
+
+To log in, use the username `admin` and the password `R3dH4t123!`.
 
 
 
