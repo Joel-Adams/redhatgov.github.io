@@ -7,7 +7,7 @@ layout: lab
 
 :icons: font
 :imagesdir: /workshops/azure_infra_ansible/images
-:package_url: http://docs.ansible.com/ansible/package_module.html
+:variables_url: https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html
 :service_url: http://docs.ansible.com/ansible/service_module.html
 
 
@@ -41,6 +41,10 @@ ansible_user={{< urifqdn_azure_login "Student" >}}
 [web]
 {{< urifqdn_azure_vm "Student" "vm1" >}}
 ----
+
+[NOTE]
+We created a group for the systems that we named *web*. We also created some variables that all of the machines will use.
+This is not the only place that we can place variables, to see more click link:{variables_url}[here].
 
 === Step 2: Run your playbook
 Run your playbook, using the following command.
