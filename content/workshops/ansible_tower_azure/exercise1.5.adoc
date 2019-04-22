@@ -1,5 +1,5 @@
 ---
-title: "Exercise 1.9 - Roles: Making your playbooks reusable"
+title: "Exercise 1.5 - Roles: Making your playbooks reusable"
 workshops: ansible_tower_azure
 workshop_weight: 15
 layout: lab
@@ -13,7 +13,7 @@ layout: lab
 :var_prec_url: http://docs.ansible.com/ansible/latest/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable
 
 
-= Exercise 1.9 - Roles: Making Your Playbooks Reusable with "Roles"
+= Exercise 1.5 - Roles: Making Your Playbooks Reusable with "Roles"
 
 == Exercise Description
 While it is possible to write a playbook in one file as we've done throughout this workshop, eventually you’ll want to reuse files and start to organize things.
