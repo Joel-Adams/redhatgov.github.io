@@ -18,7 +18,7 @@ layout: lab
 == Exercise Description
 While it is possible to write a playbook in one file as we've done throughout this workshop, eventually you’ll want to reuse files and start to organize things.
 
-The "role" feature in Ansible is the way we do this. When you create a role, you deconstruct your playbook into parts and those parts sit in a directory structure.  _"Wha??  You mean that seemingly useless link:{dir_url}[best practice] you mentioned in exercise 1.2?"._  Yep, that one.
+The "role" feature in Ansible is the way we do this. When you create a role, you deconstruct your playbook into parts and those parts sit in a directory structure.  _"Wha??  You mean that seemingly useless link:{dir_url}[best practice] you mentioned in exercise 1.7?"._  Yep, that one.
 
 For this exercise, you are going to take the playbook you just wrote and refactor it into a role.  In addition, you'll learn to use Ansible Galaxy.
 
@@ -227,8 +227,12 @@ Run the playbook.
 [source,bash]
 ----
 cd ~/apache-basic-playbook
-ansible-playbook -i ../hosts site.yml --private-key=~/.ssh/{{< span2 "prefix" "example" "-tower" >}}
+ansible-playbook -i ../hosts site.yml --ask-become
 ----
+
+[NOTE]
+The password is *RedHatSNX123!*
+
 === Step 2: Verify your output
 If successful, your standard output should look similar to the figure below.
 
