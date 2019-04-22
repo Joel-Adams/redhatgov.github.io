@@ -32,8 +32,11 @@ Run your playbook, using the following command.
 
 [source,bash]
 ----
-ansible-playbook -i ../hosts site.yml
+ansible-playbook -i ../hosts site.yml --ask-become
 ----
+
+[NOTE]
+The password is *RedHatSNX123!*
 
 == Section 2: Review
 
