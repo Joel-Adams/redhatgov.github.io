@@ -46,7 +46,11 @@ ansible_user={{< urifqdn_azure_login "Student" >}}
 We created a group for the systems that we named *web*. We also created some variables that all of the machines will use.
 This is not the only place that we can place variables, to see more click link:{variables_url}[here].
 
-=== Step 2: Test webhost response
+== Section 2 - Ad Hoc Commands
+
+For our first exercise, we are going to run some ad hoc commands to help you get a feel for how Red Hat Ansible Tower works.  Ansible ad hoc commands enable you to perform repeatable tasks on remote nodes, without having to write a playbook.  They are very useful when you simply need to do one or two tasks quickly and often, to many remote nodes.
+
+=== Step 1: Test webhost response
 
 Let's start with something basic - pinging a host.  The `ping` module tests the responsiveness of our web host.
 
