@@ -46,19 +46,46 @@ ansible_user={{< urifqdn_azure_login "Student" >}}
 We created a group for the systems that we named *web*. We also created some variables that all of the machines will use.
 This is not the only place that we can place variables, to see more click link:{variables_url}[here].
 
-=== Step 2: Run your playbook
-Run your playbook, using the following command.
+=== Step 2: Test webhost response
+
+Let's start with something basic - pinging a host.  The `ping` module tests the responsiveness of our web host.
 
 [source,bash]
 ----
-ansible-playbook -i ../hosts site.yml --private-key=~/.ssh/{{< span2 "prefix" "example" "-tower" >}}
+ansible web -i hosts -m ping
 ----
 
-== Section 2: Review
+=== Step 2: Run a Linux command
 
-If successful, you should see standard output that looks very similar to the following.  If not, just let us
-know.  We'll help get things fixed up.
+Now let's see how we can run a Linux command and format the output, using the `command` module.
 
-image::stdout_2.png[caption="Figure 1: ", title="apache-basic-playbook stdout"]
+
+[source,bash]
+----
+ansible web -i hosts -m command -a "uptime" -o
+----
+
+=== Step 3: Review the setup module
+
+Take a look at your web node's configuration.  The `setup` module displays Ansible facts (and a lot of them) about an endpoint.
+
+[source,bash]
+----
+ansible web -i hosts -m setup
+----
+
+====
+[NOTE]
+Like many Linux commands, `ansible` allows for long-form options as well as short-form.  For example:
+
+----
+ansible web --module-name ping
+----
+is the same as running
+----
+ansible web -m ping
+----
+We are going to be using the short-form options throughout this workshop
+====
 
 {{< importPartial "footer/footer_azure.html" >}}
