@@ -79,6 +79,9 @@ Add a play definition and some variables to your playbook.  These include additi
       - mod_wsgi
     apache_test_message: This is a test message
     apache_max_keep_alive_requests: 115
+    firewall_ports:
+      - https
+      - httpd
 ----
 
 
@@ -155,6 +158,14 @@ Add some file tasks and a service task to your playbook.
         name: httpd
         state: started
         enabled: yes
+
+    - name: add firewall exceptions
+      firewalld:
+        service: "{{ item }}"
+        permanent: yes
+        state: enabled
+      with_items: "{{ firewall_ports }}"
+      notify: restart firewall
 ----
 
 [NOTE]
@@ -184,6 +195,12 @@ There are really two parts to this Section; adding a handler to the playbook and
     - name: restart apache service
       service:
         name: httpd
+        state: restarted
+        enabled: yes
+
+    - name: restart firewalld
+      service:
+        name: firewalld
         state: restarted
         enabled: yes
 ----
@@ -224,6 +241,9 @@ looks the way you intended.  If not, now is the time to fix it up. The figure be
       - mod_wsgi
     apache_test_message: This is a test message
     apache_max_keep_alive_requests: 115
+    firewall_ports:
+      - https
+      - httpd
 
   tasks:
     - name: httpd packages are present
@@ -255,10 +275,24 @@ looks the way you intended.  If not, now is the time to fix it up. The figure be
         state: started
         enabled: yes
 
+    - name: add firewall exceptions
+      firewalld:
+        service: "{{ item }}"
+        permanent: yes
+        state: enabled
+      with_items: "{{ firewall_ports }}"
+      notify: restart firewall
+
   handlers:
     - name: restart apache service
       service:
         name: httpd
+        state: restarted
+        enabled: yes
+
+    - name: restart firewalld
+      service:
+        name: firewalld
         state: restarted
         enabled: yes
 ----
