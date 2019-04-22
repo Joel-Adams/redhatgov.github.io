@@ -39,7 +39,6 @@ ansible_port=22
 ansible_user={{< urifqdn_azure_login "Student" >}}
 
 [web]
-{{< urifqdn_azure_login "Student" >}}vm1.eastus.cloudapp.azure.com
 {{< urifqdn_azure_vm "Student" "vm1" >}}
 ----
 
