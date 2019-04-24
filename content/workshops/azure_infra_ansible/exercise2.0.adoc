@@ -131,11 +131,7 @@ Select ADD image:at_add.png[Add,35,25]
 
 === Step 4: Complete the Ansible Tower Credentials form
 
-Complete the form, using the following entries and your private Ansible Tower SSH key.  When you paste the key in the `PRIVATE KEY` field, make sure to include the `-----BEGIN RSA PRIVATE KEY-----` and `-----BEGIN RSA PRIVATE KEY-----` lines.
-
-----
-cat ~/.ssh/id_rsa
-----
+Complete the form, using the following entries.
 
 |===
 |NAME |Ansible Workshop Credential
@@ -145,8 +141,7 @@ cat ~/.ssh/id_rsa
 |USERNAME|{{< urifqdn_azure_login "student" >}}
 |PASSWORD|RedHatSNX123!
 |PRIVILEGE ESCALATION|sudo
-|PRIVATE KEY|paste in secret key
-|PRIVILEGE ESCALATION USERNAME|{{< urifqdn_azure_login "student" >}}
+|PRIVILEGE ESCALATION USERNAME|root
 |PRIVELEGE ESCALATION PASSWORD|RedHatSNX123!
 |===
 

@@ -1,7 +1,7 @@
 ---
-title: "Exercise 2.2 - Creating and Running a Job Template"
+title: "Exercise 2.1 - Creating and Running a Job Template"
 workshops: azure_infra_ansible
-workshop_weight: 22
+workshop_weight: 21
 layout: lab
 ---
 
@@ -9,7 +9,7 @@ layout: lab
 :icons: font
 :imagesdir: /workshops/azure_infra_ansible/images
 
-= Exercise 2.2 - Creating and Running a Job Template
+= Exercise 2.1 - Creating and Running a Job Template
 
 == Exercise Description
 This exercise will walk you through the steps required to create a job template and run it.
