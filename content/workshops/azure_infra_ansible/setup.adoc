@@ -32,7 +32,7 @@ Use this URL to access the Wetty node, just change the workshopname and region (
 ----
 
 ----
-login: {{< urifqdn_azure_login "Student" >}}
+login: {{< urifqdn_azure_login "student" >}}
 Password: R3dH4t123!
 ----
 
