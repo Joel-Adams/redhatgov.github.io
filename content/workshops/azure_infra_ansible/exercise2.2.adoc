@@ -140,7 +140,7 @@ Once the check is complete, you can open a new tab in your web browser, and navi
 
 [source,bash]
 ----
-{{< urifqdn_azure "http://" "node" "/scap" >}}
+{{< urifqdn_azure "http://" "student" "/scap" >}}
 ----
 
 Click on the link called `scan-xccdf-report-...` to refiew the SCAP report that was generated.  Note the failures in the report; look at the machines, if you want, via your Wetty ssh session, to see what the problems might be.
