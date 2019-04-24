@@ -92,7 +92,7 @@ Complete the form using the following values.  Note that the `PLAYBOOK` field sh
 |PLAYBOOK|main.yml
 |MACHINE CREDENTIAL|Ansible Workshop Credential
 |LIMIT|web
-|SKIP TAGS
+|SKIP TAGS (press enter after each tag)
 a|
 * CCE-27361-5
 * CCE-27485-2
