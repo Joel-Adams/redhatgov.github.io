@@ -1,7 +1,7 @@
 ---
-title: "Exercise 3.0 - Using Ansible to Implement Security"
+title: "Exercise 2.2 - Using Ansible to Implement Security"
 workshops: azure_infra_ansible
-workshop_weight: 30
+workshop_weight: 22
 layout: lab
 ---
 
@@ -9,7 +9,7 @@ layout: lab
 :icons: font
 :imagesdir: /workshops/azure_infra_ansible/images
 
-= Exercise 3.0 - Using Ansible to Implement Security
+= Exercise 2.2 - Using Ansible to Implement Security
 
 == Exercise Description
 In this exercise, we are going to use Red Hat Ansible Tower to run a *DISA STIG evaluation* of our environment.
