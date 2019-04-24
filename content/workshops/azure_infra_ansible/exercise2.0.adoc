@@ -143,6 +143,7 @@ cat ~/.ssh/id_rsa
 |ORGANIZATION|Default
 |TYPE|Machine
 |USERNAME|{{< urifqdn_azure_login "student" >}}
+|PASSWORD|RedHatSNX123!
 |PRIVILEGE ESCALATION|sudo
 |PRIVATE KEY|paste in secret key
 |PRIVILEGE ESCALATION USERNAME|{{< urifqdn_azure_login "student" >}}
