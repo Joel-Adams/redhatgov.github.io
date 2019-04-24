@@ -24,7 +24,7 @@ ansible *playbook* to architect Azure infrastructure.
 A playbook can have multiple plays and a play
 can have one or multiple tasks.  The goal of a *play* is to map a group of hosts.  The goal of a *task* is to implement modules against those hosts.
 
-For our first playbook, we are only going to write one play and two tasks.
+For our first playbook, we are only going to write one play and one task.
 
 
 == Section 1: Creating a Directory Structure and Files for your Playbook
