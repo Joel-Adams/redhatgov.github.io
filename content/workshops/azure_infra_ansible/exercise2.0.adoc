@@ -254,6 +254,8 @@ Using ssh, login to your control node, if by any chance you closed the wetty bro
 === Step 6: Import an existing inventory
 
 Use the `tower-manage` command to import an existing inventory.  (_Be sure to replace <username> with your actual username_)
+
+[source,bash]
 ----
 sudo tower-manage inventory_import --source=/home/{{< urifqdn_azure_login "student" >}}/hosts --inventory-name="Ansible Workshop Inventory"
 ----
