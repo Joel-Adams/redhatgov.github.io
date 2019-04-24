@@ -31,12 +31,12 @@ ansible-playbook -i ../hosts install_apache.yml --ask-become
 ----
 
 [NOTE]
-The password is *RedHatSNX123!*. The --ask-become is requesting that you enter the sudo password before the playbook is run.
+The password is *RedHatSNX123!*.
 
 
 However, before you run that command, lets take a few moments to understand the options.
 
-- *--private-key* This option ask for the private ssh key to connect to the remote machine.
+- *--ask-become* This option asks for the sudo password to run as privilaged on the remote machine. 
 - *-i* This option allows you to specify the inventory file you wish to use.
 - *-v* Altough not used here, this increases verbosity.  Try running your playbook a second time using `-v` or `-vv` to increase the verbosity
 

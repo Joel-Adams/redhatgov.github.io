@@ -18,14 +18,9 @@ layout: lab
 = Exercise 1.5 - Writing Your Second Playbook
 
 
-Now that you've gotten a sense of how ansible works, we are going to write our first
+Now that you've gotten a sense of how ansible works, we are going to write our second
 ansible *playbook*.  The playbook is where you can take some of those ad-hoc commands you just ran
 and put them into a repeatable set of *plays* and *tasks*.
-
-A playbook can have multiple plays and a play
-can have one or multiple tasks.  The goal of a *play* is to map a group of hosts.  The goal of a *task* is to implement modules against those hosts.
-
-For our first playbook, we are only going to write one play and two tasks.
 
 
 == Section 1: Creating a Directory Structure and Files for your Playbook
