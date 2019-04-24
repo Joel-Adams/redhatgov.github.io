@@ -55,7 +55,7 @@ Complete the project form, using the following entries:
 |DESCRIPTION|STIG Role Playbook
 |ORGANIZATION|Default
 |SCM TYPE|Git
-|SCM URL| https://github.com/ajacocks/rhel7_stig.git
+|SCM URL| https://github.com/Joel-Adams/rhel7_disa_stig.git
 |SCM BRANCH|
 |SCM UPDATE OPTIONS
 a|
