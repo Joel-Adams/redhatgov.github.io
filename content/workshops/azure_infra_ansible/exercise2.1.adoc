@@ -159,7 +159,7 @@ Once your job is successful, navigate to your new website, where *workshopname* 
 
 [source,bash]
 ----
-{{< urifqdn_azure "http://" "node" "" >}}
+{{< urifqdn_azure "http://" "studnet" "" >}}
 ----
 
 
