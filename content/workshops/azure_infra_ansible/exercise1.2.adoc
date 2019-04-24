@@ -51,7 +51,7 @@ image::stdout_1.png[caption="Figure 1: ", title="azure_infra playbook stdout",22
 
 Notice that the play and each task is named, so that you can understand the action being performed and the node it is being performed upon.
 
-Once the play completes. Log into your Azure portal and click *All resources* to view the Virtaul Network that you just created.
+Once the play completes. Log into your Azure portal and click *All resources* and *Refresh* to view the Virtaul Network that you just created.
 
 image::azure_network.png[caption="Figure 2: ", title="Azure Resources"]
 
