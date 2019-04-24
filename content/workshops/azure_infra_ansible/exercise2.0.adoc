@@ -118,18 +118,14 @@ synchronizing with inventory sources, and importing project content from a versi
 There are many link:{cred_url}[types of credentials] including machine, network, and various cloud providers.  In this workshop, we are using a *machine* credential.
 
 
-=== Step 1: Select Settings
-
-Select Ansible Tower Settings (gear icon).     image:at_gear.png[Gear,20,20]
-
-=== Step 2: Select Credentials
+=== Step 1: Select Credentials
 
 Select CREDENTIALS image:at_credentials.png[Cred,100,35]
 
-=== Step 3: Select Add
+=== Step 2: Select Add
 Select ADD image:at_add.png[Add,35,25]
 
-=== Step 4: Complete the Ansible Tower Credentials form
+=== Step 3: Complete the Ansible Tower Credentials form
 
 Complete the form, using the following entries.
 
@@ -151,7 +147,7 @@ image::at_cred_detail.png[Cred_Detail, 900,caption="Figure 5: ",title="Adding a 
 
 
 
-=== Step 5: Save
+=== Step 4: Save
 
 Select   SAVE  image:at_save.png[Save,35,25] +
 
