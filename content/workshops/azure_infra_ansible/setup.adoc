@@ -44,6 +44,8 @@ image::wetty.png[caption="Figure 1: ", title='wetty', width=1024]
 [IMPORTANT]
 Be sure you can log in to your instances.  If you can't log in start shouting, loudly, and waving your hands!
 
+[NOTE]
+To copy and paste in Wetty you use Ctrl+c and Ctrl+v just like you would in a regular text file. 
 
 == End Result
 
