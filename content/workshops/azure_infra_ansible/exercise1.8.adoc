@@ -7,7 +7,7 @@ layout: lab
 
 :icons: font
 :imagesdir: /workshops/ansible_tower_azure/images
-:ansible_website: http://{{< urifqdn_azure_vm "Student" "vm1" >}}
+
 
 
 = Exercise 1.8 - Running the Apache-Basic Playbook
@@ -46,7 +46,7 @@ image::stdout_2.png[caption="Figure 1: ", title="apache-basic-playbook stdout"]
 
 [NOTE]
 Now lets take a look at the new web site that we just created.
-Visit URL: link:{ansible_website}[{{< urifqdn_azure_vm "Student" "vm1" >}}].
+Visit URL: http://{{< urifqdn_azure_vm "Student" "vm1" >}}
 
 
 {{< importPartial "footer/footer_azure.html" >}}
