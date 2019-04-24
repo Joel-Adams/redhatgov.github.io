@@ -285,22 +285,22 @@ tasks:
          private_ip_allocation_method: Dynamic
          public_ip_address_name: {{< urifqdn_azure_login "Student" "-PubIP" >}}
 
- - name: Create Azure instances for ansible node (control node)
-   azure_rm_virtualmachine:
-     resource_group: {{< urifqdn_azure_login "Student" >}}
-     name: {{< urifqdn_azure_login "Student" "vm1">}}
-     vm_size: Standard_B2s
-     admin_username: {{< urifqdn_azure_login "Student" >}}
-     admin_password: RedHatSNX123!
-     network_interface_names: {{< urifqdn_azure_login "Student" "-NI" >}}
-     image:
-       offer: RHEL
-       publisher: RedHat
-       sku: '7-RAW'
-       version: latest
-     ssh_public_keys:
-       - path: /home/azure-user/.ssh/
-         key_data: "{{lookup('file', '/home/azure-user/.ssh/id_rsa.pub')}}"
+  - name: Create Azure RHEL Virtual Machine
+    azure_rm_virtualmachine:
+      resource_group: {{< urifqdn_azure_login "Student" >}}
+      name: {{< urifqdn_azure_login "Student" "vm1">}}
+      vm_size: Standard_B2s
+      admin_username: {{< urifqdn_azure_login "student" >}}
+      admin_password: RedHatSNX123!
+      network_interface_names: {{< urifqdn_azure_login "Student" "-NI" >}}
+      image:
+        offer: RHEL
+        publisher: RedHat
+        sku: '7-RAW'
+        version: latest
+      ssh_public_keys:
+        - path: /home/{{< urifqdn_azure_login "student" >}}/.ssh/authorized_keys
+          key_data: "{{lookup('file', '/home/{{< urifqdn_azure_login "student" >}}/.ssh/id_rsa.pub')}}"
 ----
 
 
@@ -384,7 +384,7 @@ You are ready to automate!
       resource_group: {{< urifqdn_azure_login "Student" >}}
       name: {{< urifqdn_azure_login "Student" "vm1">}}
       vm_size: Standard_B2s
-      admin_username: {{< urifqdn_azure_login "Student" >}}
+      admin_username: {{< urifqdn_azure_login "student" >}}
       admin_password: RedHatSNX123!
       network_interface_names: {{< urifqdn_azure_login "Student" "-NI" >}}
       image:
@@ -393,8 +393,8 @@ You are ready to automate!
         sku: '7-RAW'
         version: latest
       ssh_public_keys:
-        - path: /home/{{< urifqdn_azure_login "Student" >}}/.ssh/authorized_keys
-          key_data: "{{lookup('file', '/home/azure-user/.ssh/id_rsa.pub')}}"
+        - path: /home/{{< urifqdn_azure_login "student" >}}/.ssh/authorized_keys
+          key_data: "{{lookup('file', '/home/{{< urifqdn_azure_login "student" >}}/.ssh/id_rsa.pub')}}"
 ----
 
 {{< importPartial "footer/footer_azure.html" >}}

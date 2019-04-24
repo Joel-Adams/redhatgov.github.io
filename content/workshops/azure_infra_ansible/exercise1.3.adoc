@@ -33,7 +33,7 @@ We will be creating an SSH key using the default variables without a password.
 ssh-keygen -t rsa -b 2048
 ----
 
-Once that command is run leave the passphrase blank and press enter. Then press enter again for the same passphrase.
+Once that command is run leave the default location, passphrase blank, and press enter three times.
 
 image::ssh.png[caption="Figure 1: ", title="SSH Keygen Creation"]
 
