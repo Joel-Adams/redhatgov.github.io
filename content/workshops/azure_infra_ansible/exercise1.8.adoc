@@ -47,7 +47,7 @@ image::stdout_2.png[caption="Figure 1: ", title="apache-basic-playbook stdout"]
 
 [NOTE]
 Now lets take a look at the new web site that we just created.
-Visit URL: {{< urifqdn_azure_login "student" "vm1" >}}
+Visit URL: *{{< urifqdn_azure_vm "Student" "vm1" >}}*
 
 
 {{< importPartial "footer/footer_azure.html" >}}
