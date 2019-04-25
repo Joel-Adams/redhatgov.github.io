@@ -139,6 +139,37 @@ image:survey3.png[survey3]
 
 Then Click SAVE image:at_save.png[Save] again on the Workflow Template.
 
+=== Step 6: Preemptive Strike
+
+So what is this workflow actaully doing? It will be taking the template we created in Exercise 3.0 and building out a new virtual machine using the exesting security group and virtual network.
+It will then be taking the templates that we created in exercise 1.2 and 2.2 to install apache and run the STIG test against the new machine.
+The only thing that we are missing is the machine name in the inventory. Since we already know what the DNS name will be, we will preemptively add the machine to our inventory before the workflow is run.
+
+Click on INVENTORIES image:at_inv_icon.png[Inv,100,35]
+
+Select the *Ansible Workshop Inventory*
+
+Select *HOSTS* then select the *Green Plus* symbol to add a host.
+
+Add your *HOST NAME* {{< urifqdn_azure_vm "Student" "vm2" >}}
+
+image:azure_hosts.png[hosts]
+
+Then Click SAVE image:at_save.png[Save]
+
+Next Select *GROUPS* at the top and then select the *Green Plus* symbol to associate the host with an existing group.
+
+Select *web* then Click SAVE image:at_save.png[Save]
+
+image:azure_group.png[group]
+
+== Section 2: Running Our Workflow
+
+Select TEMPLATES image:at_templates.png[temp,120,35]
+
+Click on the rocketship icon image:at_launch_icon.png[Add,35,25] for the *Azure-Workflow* Job Template
+
+
 
 
 
