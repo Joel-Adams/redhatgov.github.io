@@ -47,7 +47,7 @@ Complete the form, using the following entries.
 
 
 
-image::at_cred_detail.png[Cred_Detail, 900,caption="Figure 5: ",title="Adding a Credential"]
+image::azure_creds.png[Cred_Detail, 900,caption="Figure 5: ",title="Adding a Credential"]
 
 
 
