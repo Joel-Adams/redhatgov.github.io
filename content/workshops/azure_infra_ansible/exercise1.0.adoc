@@ -53,8 +53,14 @@ Password: RedHatSNX123!
 There are multiple ways to authenticate Ansible with Azure. For reference documentation on different connection styles including the use of service principals please see link:{ansible_azure_url}[Azure Authentication Guide].
 We will be using Azure CLI for this workshop due to its ease of use.
 
+=== Step 2: Copy your Subscription ID
 
-=== Step 2: Log into the Azure Portal
+Once you login the system will output some informaton about your Azure connection. Please copy the *id* for later use in Exercise 3.0
+
+image:azure_subscription.png[Azure Subscription ID]
+
+
+=== Step 3: Log into the Azure Portal
 
 Now let's see what resources we have available currently in our Azure Portal.
 
@@ -70,7 +76,7 @@ image::azure_resources.png[catpion="Figure 3: ", title="Azure Resources",328]
 [NOTE]
 As you can tell, there are currently no resources inside your Resource Group.
 
-=== Step 3: Create a hosts file for your Ansible inventory
+=== Step 4: Create a hosts file for your Ansible inventory
 
 Back in your Wetty browser use `vi` or `vim` to open a file called `hosts` on your Red Hat Enterprise Server.
 
