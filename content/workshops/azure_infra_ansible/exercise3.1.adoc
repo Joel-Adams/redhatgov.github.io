@@ -207,10 +207,16 @@ http://{{< urifqdn_azure_vm "Student" "vm2" >}}
 
 If all went well, you should see something like this, but with your own custom message:
 
-
-
 image::at_web_tm_3.png[caption="Figure 4: ",title='New Website with Personalized Test Message', width=1024]
 
+Lets also take a look at the new STIG report that was created.
+
+[source,bash]
+----
+http://{{< urifqdn_azure_vm "Student" "vm2" >}}/scap
+----
+
+Click on the link called `scan-xccdf-report-...` to refiew the SCAP report that was generated.  Note the failures in the report; look at the machines, if you want, via your Wetty ssh session, to see what the problems might be.
 
 
 {{< importPartial "footer/footer_azure.html" >}}
