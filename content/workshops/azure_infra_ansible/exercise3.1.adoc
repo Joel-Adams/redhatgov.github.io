@@ -85,7 +85,7 @@ Click SAVE image:at_save.png[Save]
 
 Back on the Template overview screen select *ADD SURVEY*
 
-image:azure_survey.png[SURVEY,228]
+image:azure_survey.png[SURVEY]
 
 We will now add three seperate Surveys.
 
@@ -145,7 +145,7 @@ So what is this workflow actaully doing? It will be taking the template we creat
 It will then be taking the templates that we created in exercise 1.2 and 2.2 to install apache and run the STIG test against the new machine.
 The only thing that we are missing is the machine name in the inventory. Since we already know what the DNS name will be, we will preemptively add the machine to our inventory before the workflow is run.
 
-Click on INVENTORIES image:at_inv_icon.png[Inv,228]
+Click on INVENTORIES image:at_inv_icon.png[Inv]
 
 Select the *Ansible Workshop Inventory*
 
@@ -153,7 +153,7 @@ Select *HOSTS* then select the *Green Plus* symbol to add a host.
 
 Add your *HOST NAME* {{< urifqdn_azure_vm "Student" "vm2" >}}
 
-image:azure_hosts.png[hosts,228]
+image:azure_hosts.png[hosts]
 
 Then Click SAVE image:at_save.png[Save]
 
