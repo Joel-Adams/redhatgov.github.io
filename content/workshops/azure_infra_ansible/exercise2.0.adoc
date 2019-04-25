@@ -70,45 +70,6 @@ Select "_I agree to the End User License Agreement_".
 
 Click on SUBMIT image:at_submit.png[Sub,35,25]
 
-// === Step 3: Request a workshop license
-
-// In a separate browser tab, browse to https://www.ansible.com/workshop-license to request a workshop license.
-
-// At the commandline in your Ansible Tower instance download the encrypted license file via the curl command.
-
-// [source,bash]
-// ----
-// curl -O https://s3.amazonaws.com/ansible-tower-workshop-license/license
-// ----
-
-// Then Decrypt the license file via Ansible Vault.
-// **The instructor should provide the password**
-
-// [source,bash]
-// ----
-// ansible-vault decrypt license --ask-vault-pass
-//
-// ...
-
-// Vault password:
-// ----
-
-// Now use curl to POST the license to the Tower API endpoint.
-
-// [source,bash]
-// ----
-// curl -k https://localhost/api/v1/config/ \
-//      -H 'Content-Type: application/json' \
-//      -X POST \
-//      --data @license \
-//      --user admin:ansibleWS
-//
-// ----
-
-
-
-
-
 
 == Section 2: Creating a Credential
 
@@ -143,7 +104,7 @@ Complete the form, using the following entries.
 
 
 
-image::at_cred_detail.png[Cred_Detail, 900,caption="Figure 5: ",title="Adding a Credential"]
+image::credentials.png[Cred_Detail, 900,caption="Figure 5: ",title="Adding a Credential"]
 
 
 
