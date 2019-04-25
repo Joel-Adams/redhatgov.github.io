@@ -15,7 +15,8 @@ layout: lab
 In this exercise, we are going to use Red Hat Ansible Tower to perform multiple steps in a workflow. The first step will be to create a new virtual machine using exesting resources, deploy a web server on the virtual machine, then run the STIG security check against the new machine.
 
 
-== Workflows
+== Section 1: Creating Credentials
+
 
 === Step 1: Create a new Workflow
 
@@ -42,6 +43,26 @@ That will then bring up the *WORKFLOW VISUALIZER*.
 === Step 4: Creating the Workflow
 
 Select the image:workflow_start.png[Start]
+
+That will bring up the *ADD A TEMPLATE* page.
+image:add_a_template.png[ADD]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 === Step 3: Click Add
 
