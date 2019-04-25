@@ -172,6 +172,7 @@ Select TEMPLATES image:at_templates.png[temp,120,35]
 Click on the rocketship icon image:at_launch_icon.png[Add,35,25] for the *Azure-Workflow* Job Template
 
 [NOTE]
+Review the prompts and make sure it is using your correct *STUDENT NUMBER {{< urifqdn_azure_login "" >}}*, the *VIRTUAL MACHINE NUMBER* of *2*, and input your *test message*
 
 Then select NEXT image:next.png[next]
 
