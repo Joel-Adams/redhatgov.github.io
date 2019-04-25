@@ -41,7 +41,7 @@ Complete the form, using the following entries.
 |ORGANIZATION|Default
 |TYPE|Microsoft Azure Resource Manager
 |SUBSCRIPTION ID| (Your subscription ID that you copied in Exercise 1.0)
-|USERNAME|{{< urifqdn_azure_vm "Student" "vm1" >}}
+|USERNAME|{{< urifqdn_azure_login "Student" "@snxcsp.onmicrosoft.com" >}}
 |PASSWORD|RedHatSNX123!
 |===
 
