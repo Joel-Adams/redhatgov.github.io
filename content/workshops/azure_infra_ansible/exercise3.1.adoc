@@ -179,6 +179,37 @@ Then select NEXT image:next.png[next]
 Then select LAUNCH image:launch.png[launch]
 
 
+=== Step 2: Review the Job Run
+
+Once the template is launched it will automatically bring you into the jobs screen. Inside of this screen you can see each template in the workflow and its status.
+You can even click on the individual templates to bring up job details as it is running or after it has completed.
+
+Once your Workflow completes it should look like the picture below.
+
+image:workflow_complete.png[completed workflow]
+
+You should also be able to refresh you list of resources inside Azure and view what has been created.
+
+image:azure_resources_complete.png[az_resources]
+
+[NOTE]
+Notice that we created a new Network interface (NI2), a new Public IP address (PubIP2), and a new Virtual Machine (vm2).
+We didn't create a new Virtual Network, Security Group, or Subnet. Since we already had those in palce we just utilized them with the new Virtual Machine.
+
+=== Step 3: Review
+
+Now lets take a look at the new system that we created.
+
+[source,bash]
+----
+http://{{< urifqdn_azure_vm "Student" "vm2" >}}
+----
+
+If all went well, you should see something like this, but with your own custom message:
+
+
+
+image::at_web_tm_3.png[caption="Figure 1: ",title="New Website with Personalized Test Message"]
 
 
 
