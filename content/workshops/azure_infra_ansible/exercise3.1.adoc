@@ -65,7 +65,7 @@ Select *Apache Basic Job Template* then press *SELECT*
 
 image:azure_apache_job.png[ADD_Job]
 
-Once that is completed you will see *Apache Basic Job Template* has been added to our workflow. From here we will add one final template so hover over the *Apache Basic Job Template* and select the *green plus symbol*
+Once that is completed you will see *Apache Basic Job Template* has been added to our workflow. From here we will add one final template, so hover over the *Apache Basic Job Template* and select the *green plus symbol*
 
 image:azure_apache_workflow.png[Workflow]
 
