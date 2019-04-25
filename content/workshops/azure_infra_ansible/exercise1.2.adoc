@@ -57,7 +57,7 @@ image::azure_network.png[caption="Figure 2: ", title="Azure Resources"]
 
 == Section 2: Building out your Infrastructure
 
-Now that we have a Virtaul Network,  lets build out the reset of our infrastructure so support a virtual machine. To do this we are going to be adding
+Now that we have a Virtaul Network,  lets build out the rest of our infrastructure so support a virtual machine. To do this we are going to be adding
 tasks to our original playbook.
 
 === Step 1: Create a subnet for the Virtual Network.
