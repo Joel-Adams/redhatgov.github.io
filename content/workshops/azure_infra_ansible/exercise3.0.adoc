@@ -16,6 +16,44 @@ In this exercise, we are going to use Red Hat Ansible Tower to perform multiple 
 
 
 == Section 1: Creating Credentials
+Creating a Credential
+
+Credentials are utilized by Tower for authentication when launching jobs against machines,
+synchronizing with inventory sources, and importing project content from a version control system.
+
+There are many link:{cred_url}[types of credentials] including machine, network, and various cloud providers.  In this workshop, we are using a *Microsoft Azure Resource Manager* credential.
+
+
+=== Step 1: Select Credentials
+
+Select CREDENTIALS image:at_credentials.png[Cred,100,35]
+
+=== Step 2: Select Add
+Select ADD image:at_add.png[Add,35,25]
+
+=== Step 3: Complete the Ansible Tower Credentials form
+
+Complete the form, using the following entries.
+
+|===
+|NAME |Azure Credentials
+|DESCRIPTION|Azure Login Credentials
+|ORGANIZATION|Default
+|TYPE|Microsoft Azure Resource Manager
+|SUBSCRIPTION ID| (Your subscription ID that you copied in Exercise 1.0)
+|USERNAME|{{< urifqdn_azure_vm "Student" "vm1" >}}
+|PASSWORD|RedHatSNX123!
+|===
+
+
+
+image::at_cred_detail.png[Cred_Detail, 900,caption="Figure 5: ",title="Adding a Credential"]
+
+
+
+=== Step 4: Save
+
+Select   SAVE  image:at_save.png[Save,35,25] +
 
 
 === Step 1: Create a new Workflow
