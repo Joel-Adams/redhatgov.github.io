@@ -85,7 +85,7 @@ Click SAVE image:at_save.png[Save]
 
 Back on the Template overview screen select *ADD SURVEY*
 
-image:azure_survey.png[SURVEY,width=768]
+image::azure_survey.png[caption="Figure 1: ", title='Survey', width=1024]
 
 We will now add three seperate Surveys.
 
