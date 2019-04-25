@@ -81,5 +81,24 @@ image:final_workflow.png[WORKFLOW]
 
 Click SAVE image:at_save.png[Save]
 
+=== Step 5: Adding Surveys
+
+Back on the Template overview screen select *ADD SURVEY*
+
+image:azure_survey.png[SURVEY]
+
+We will now add three seperate Surveys.
+
+The first Survey will be to add your Student Number as a Variable. Fill out the survey with the infromation below.
+
+|===
+|PROMPT|Student Number
+|DESCRIPTION|What is your workshop student number?
+|ANSWER VARIABLE NAME|student_number
+|ANSWER TYPE| Integer
+|MINIMUM| 1
+|MAXIMUM| 1
+|DEFAULT| {{< urifqdn_azure_login "" >}}
+|===
 
 {{< importPartial "footer/footer_azure.html" >}}
