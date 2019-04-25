@@ -101,4 +101,45 @@ The first Survey will be to add your Student Number as a Variable. Fill out the 
 |DEFAULT| {{< urifqdn_azure_login "" >}}
 |===
 
+Click SAVE image:at_save.png[Save]
+
+image:survey1.png[survey1]
+
+The second Survey will create a variable for your Virtual machine. Since we used 1 in our first creation this will default to 2 for the second machine.
+
+|===
+|PROMPT|Virtual Machine Number
+|DESCRIPTION|Virtual Machine Number for DNS name
+|ANSWER VARIABLE NAME|virtual_machine_num
+|ANSWER TYPE| Integer
+|MINIMUM| 1
+|MAXIMUM| 5
+|DEFAULT| 2
+|===
+
+Click SAVE image:at_save.png[Save]
+
+image:surve2.png[survey2]
+
+The final Survey will be for the apache server test message just like we created earlier.
+
+|===
+|PROMPT|Please enter a test message for your new website
+|DESCRIPTION|Website test message prompt
+|ANSWER VARIABLE NAME|apache_test_message
+|ANSWER TYPE| Text
+|MINIMUM LENGTH| 0
+|MAXIMUM LENGTH| 1024
+|DEFAULT ANSWER| Be creative, keep it clean, we’re all professionals here
+|===
+
+Click SAVE image:at_save.png[Save]
+
+image:survey3.png[survey3]
+
+Then Click SAVE image:at_save.png[Save] again on the Workflow Template.
+
+
+
+
 {{< importPartial "footer/footer_azure.html" >}}
