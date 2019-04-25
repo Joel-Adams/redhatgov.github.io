@@ -126,7 +126,7 @@ Complete the template form, by entering the following values:
 |PROJECT|Azure Project
 |PLAYBOOK|examples/cloud-azure/site.yml
 |Microsoft Azure Resource Manager CREDENTIAL|Azure Credentials
-
+|===
 
 
 image::azure_template.png[caption="Figure 3: ", 1024,title="Job Template Form"]
