@@ -53,5 +53,6 @@ image:add_a_template.png[ADD]
 
 Select the *Azure-Infra template* then press *SELECT*
 
+image:azure_job.png[Select]
 
 {{< importPartial "footer/footer_azure.html" >}}
