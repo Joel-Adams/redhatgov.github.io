@@ -55,4 +55,21 @@ Select the *Azure-Infra template* then press *SELECT*
 
 image:azure_job.png[Select]
 
+Once that is completed you will see *Azure-Infra* has been added to our workflow. Hover over *Azure-Infra* and select the *green plus symbol*
+
+image:azure_add_job1.png[ADD_Job]
+
+This will bring back up the *ADD A TEMPLATE* page.
+
+Select *Apache Basic Job Template* then press *SELECT*
+
+image:azure_apache_job.png[ADD_Job]
+
+Once that is completed you will see *Apache Basic Job Template* has been added to our workflow. From here we will add one final template so hover over the *Apache Basic Job Template* and select the *green plus symbol*
+
+image:azure_apache_workflow.png[Workflow]
+
+
+
+
 {{< importPartial "footer/footer_azure.html" >}}
