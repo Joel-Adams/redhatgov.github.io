@@ -12,8 +12,16 @@ layout: lab
 = Exercise 3.0 - Tying it All Together
 
 == Exercise Description
-In this exercise, we are going to use Red Hat Ansible Tower to perform multiple steps in a workflow. The first step will be to create a new virtual machine using exesting resources, deploy a web server on the virtual machine, then run the STIG security check against the new machine.
+In this exercise, we are going to configure Tower so that we can run a new playbook for Azure Infrastructure.
+[NOTE]
 
+There are a number of constructs in the Ansible Tower UI that enable multi-tenancy, notifications, scheduling, etc.
+However, we are only going to focus on a few of the key concepts required for this workshop today.
+
+* Credentials
+* Projects
+* Inventory
+* Job Template
 
 == Section 1: Creating Credentials
 Creating a Credential
@@ -46,77 +54,37 @@ Complete the form, using the following entries.
 |===
 
 
-
-image::azure_creds.png[Cred_Detail, 900,caption="Figure 5: ",title="Adding a Credential"]
-
-
+image::azure_creds.png[Cred_Detail, 900,caption="Figure 1: ",title="Adding a Credential"]
 
 === Step 4: Save
 
 Select   SAVE  image:at_save.png[Save,35,25] +
 
+== Section 2: Creating a Project
 
-=== Step 1: Create a new Workflow
+A Project is a logical collection of Ansible playbooks, represented in Tower.
+You can manage playbooks and playbook directories, by either placing them manually
+under the Project Base Path on your Tower server, or by placing your playbooks into
+a source code management (SCM) system supported by Tower, including Git, Subversion, and Mercurial.
 
-Select TEMPLATES image:at_templates.png[temp,120,35]
+=== Step 1: Open a new project
 
-=== Step 2: Create a new template
+Click on PROJECTS image:at_projects_icon.png[Proj,100,35]
 
-Click image:at_add.png[Add,35,25], and select JOB TEMPLATE image:workflow.png[jobT,150,100]
+=== Step 2: Add the project
 
-=== Step 3: Complete the Workflow Job Template form
+Select  ADD   image:at_add.png[Add,35,25]
 
-Complete the template form, by entering the following values:
+=== Step 3: Complete the Project form
 
-|===
-|NAME |Azure-Workflow
-|DESCRIPTION|Workflow to build infra, install apache, and STIG test
-|ORGANIZATION|Default
-|===
-
-Click SAVE image:at_save.png[Save]
-
-That will then bring up the *WORKFLOW VISUALIZER*.
-
-=== Step 4: Creating the Workflow
-
-Select the image:workflow_start.png[Start]
-
-That will bring up the *ADD A TEMPLATE* page.
-image:add_a_template.png[ADD]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=== Step 3: Click Add
-
-Next, Select    image:at_add.png[Add,35,25]
-
-=== Step 4: Complete the Project form
-
-Complete the project form, using the following entries:
+Complete the form using the following entries:
 
 |===
-|NAME |Ansible STIG Project
-|DESCRIPTION|STIG Role Playbook
+|NAME |Azure Project
+|DESCRIPTION|Azure Infrastructure Setup
 |ORGANIZATION|Default
 |SCM TYPE|Git
-|SCM URL| https://github.com/Joel-Adams/rhel7_disa_stig.git
-|SCM BRANCH|
+|SCM URL| https://github.com/Joel-Adams/lightbulb.git
 |SCM UPDATE OPTIONS
 a|
 
@@ -125,84 +93,49 @@ a|
 - [*] Update on Launch
 |===
 
-image::section3.0-create-project.png[Cred_Detail, 900,caption="Figure 1: ",title="Defining a Project"]
 
-=== Step 5: Save
+
+image::azure_project.png[Cred_Detail, 900,caption="Figure 2: ",title="Defining a Project"]
+
+
+
+=== Step 4: Save
 
 Select  SAVE   image:at_save.png[Save,35,25]
 
-=== Step 6: Select Template tab
 
-In your Tower window, click `TEMPLATES`
+== Section 3: Creating a Template
 
-=== Step 7: Add the job template
+=== Step 1: Navigate to the Templates tab
 
-Click ADD image:at_add.png[Add,35,25], and select `JOB TEMPLATE`
+Select TEMPLATES image:at_templates.png[temp,120,35]
 
-=== Step 8: Complete the job Template form
+=== Step 2: Create a new template
 
-Complete the form using the following values.  Note that the `PLAYBOOK` field should offer `main.yml` as an option, when clicked.
+Click image:at_add.png[Add,35,25], and select JOB TEMPLATE image:at_jobtemplate.png[jobT,150,100]
+
+=== Step 3: Complete the job Template form
+
+Complete the template form, by entering the following values:
 
 |===
-|NAME |STIG Job Template
-|DESCRIPTION|Template for security playbooks
+|NAME |Azure-Infra
+|DESCRIPTION|Spin up azure infrastructure
 |JOB TYPE|Run
-|INVENTORY|Ansible Workshop Inventory
-|PROJECT|Ansible STIG Project
-|PLAYBOOK|main.yml
-|MACHINE CREDENTIAL|Ansible Workshop Credential
-|LIMIT|web
-|SKIP TAGS (press enter after each tag)
-a|
-* CCE-27361-5
-* CCE-27485-2
-* CCE-27311-0
-* CCE-80546-5
-|OPTIONS
-a|
-- [*] Enable Privilege Escalation
-|===
+|INVENTORY|Demo Inventory
+|PROJECT|Azure Project
+|PLAYBOOK|examples/cloud-azure/site.yml
+|Microsoft Azure Resource Manager CREDENTIAL|Azure Credentials
 
-image::section3.0-stig_template.png[Cred_Detail, 900,caption="Figure 2: ",title="Defining a Job"]
 
-=== Step 9: Save the template and run it
 
-Click SAVE image:at_save.png[Save], to store your new template, and we are ready to run it.
+image::azure_template.png[caption="Figure 3: ", 1024,title="Job Template Form"]
 
-Click  the rocketship icon image:at_launch_icon.png[Add,35,25] next to the `STIG Job Template` entry, to launch the job.
 
-View what the job looks like as it is executing, as well as what the SCAP results look like, when uploaded to your second node, in the panel, below.
 
-{{< panel_group >}}
-{{% panel "Job Status" %}}
+=== Step 4: Save
 
-:icons: font
-:imagesdir: /workshops/ansible_tower/images
+Click SAVE image:at_save.png[Save]
 
-image:at_800-53_job_status.png[Job Status, width=1024]
-
-{{% /panel %}}
-{{% panel "Results" %}}
-
-:icons: font
-:imagesdir: /workshops/ansible_tower/images
-
-image:at_scap_report.png[SCAP Report, width=1024]
-
-{{% /panel %}}
-{{< /panel_group >}}
-
-=== Step 10: Observe the scanning process and view reports
-
-You can watch the scan run against your managed node.  Note that each compliance check is named and detailed.
-
-Once the check is complete, you can open a new tab in your web browser, and navigate to the following URL, where `workshopname` is the workshop prefix, and `#` is the number that your instructor gave you:
-
-[source,bash]
-----
-http://{{< urifqdn_azure_vm "Student" "vm1" >}}/scap
-----
-
-Click on the link called `scan-xccdf-report-...` to refiew the SCAP report that was generated.  Note the failures in the report; look at the machines, if you want, via your Wetty ssh session, to see what the problems might be.
 
 {{< importPartial "footer/footer_azure.html" >}}
