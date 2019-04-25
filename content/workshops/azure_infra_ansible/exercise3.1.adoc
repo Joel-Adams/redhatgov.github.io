@@ -48,7 +48,10 @@ That will then bring up the *WORKFLOW VISUALIZER*.
 Select the image:workflow_start.png[Start]
 
 That will bring up the *ADD A TEMPLATE* page.
+
 image:add_a_template.png[ADD]
+
+Select the *Azure-Infra template* then press *SELECT*
 
 
 {{< importPartial "footer/footer_azure.html" >}}
