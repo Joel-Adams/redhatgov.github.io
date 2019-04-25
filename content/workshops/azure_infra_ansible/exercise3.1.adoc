@@ -69,7 +69,17 @@ Once that is completed you will see *Apache Basic Job Template* has been added t
 
 image:azure_apache_workflow.png[Workflow]
 
+This will once agin bring back up the *ADD A TEMPLATE* page.
 
+Select *STIG Job Template* then press *SELECT*
+
+image:stig_template.png[STIG]
+
+Our Final Workflow should look like the example below.
+
+image:final_workflow.png[WORKFLOW]
+
+Click SAVE image:at_save.png[Save]
 
 
 {{< importPartial "footer/footer_azure.html" >}}
