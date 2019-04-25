@@ -85,7 +85,7 @@ Click SAVE image:at_save.png[Save]
 
 Back on the Template overview screen select *ADD SURVEY*
 
-image:azure_survey.png[SURVEY]
+image:azure_survey.png[SURVEY,100,35]
 
 We will now add three seperate Surveys.
 
@@ -153,7 +153,7 @@ Select *HOSTS* then select the *Green Plus* symbol to add a host.
 
 Add your *HOST NAME* {{< urifqdn_azure_vm "Student" "vm2" >}}
 
-image:azure_hosts.png[hosts]
+image:azure_hosts.png[hosts,100,35]
 
 Then Click SAVE image:at_save.png[Save]
 
