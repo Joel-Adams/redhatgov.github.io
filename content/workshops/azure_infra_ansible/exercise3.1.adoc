@@ -153,7 +153,7 @@ Select *HOSTS* then select the *Green Plus* symbol to add a host.
 
 Add your *HOST NAME* {{< urifqdn_azure_vm "Student" "vm2" >}}
 
-image:azure_hosts.png[hosts]
+image::azure_hosts.png[caption="Figure 2: ", title='Hosts', width=1024]
 
 Then Click SAVE image:at_save.png[Save]
 
@@ -161,7 +161,7 @@ Next Select *GROUPS* at the top and then select the *Green Plus* symbol to assoc
 
 Select *web* then Click SAVE image:at_save.png[Save]
 
-image:azure_group.png[group]
+image::azure_group.png[caption="Figure 3: ", title='Groups', width=1024]
 
 == Section 2: Running Our Workflow
 
@@ -186,7 +186,7 @@ You can even click on the individual templates to bring up job details as it is 
 
 Once your Workflow completes it should look like the picture below.
 
-image:workflow_complete.png[completed workflow]
+image::workflow_complete.png[caption="Figure 3: ", title='Workflow', width=1024]
 
 You should also be able to refresh you list of resources inside Azure and view what has been created.
 
@@ -209,7 +209,7 @@ If all went well, you should see something like this, but with your own custom m
 
 
 
-image::at_web_tm_3.png[caption="Figure 1: ",title="New Website with Personalized Test Message"]
+image::at_web_tm_3.png[caption="Figure 4: ",title='New Website with Personalized Test Message', width=1024]
 
 
 
