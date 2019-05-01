@@ -138,7 +138,7 @@ Complete the form using the following entries:
 |DESCRIPTION|workshop playbooks
 |ORGANIZATION|Default
 |SCM TYPE|Git
-|SCM URL| https://github.com/ansible/lightbulb
+|SCM URL| https://github.com/Joel-Adams/lightbulb
 |SCM BRANCH|
 |SCM UPDATE OPTIONS
 a|
